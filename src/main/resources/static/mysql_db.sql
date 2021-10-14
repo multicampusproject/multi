@@ -57,7 +57,7 @@ ON DELETE CASCADE;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 create table multinotice(
-    notice_code int not null primary key,
+    notice_code int not null auto_increment primary key,
     notice_subject varchar(100) not null,
     notice_content varchar(3000) not null,
     notice_regdate datetime default CURRENT_TIMESTAMP,
