@@ -34,7 +34,7 @@ ON DELETE CASCADE;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 create table multihistory(
-    recommend_code varchar(100) not null primary key,
+    recommend_code int not null auto_increment primary key,
     image_name varchar(100) not null,
     music_num int not null,
     member_email varchar(100) not null
