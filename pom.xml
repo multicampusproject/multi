@@ -63,7 +63,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
+
 	
 		
 		<dependency>
@@ -71,10 +71,9 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 			<!-- for jsp -->
-=======
->>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
+
 		<dependency>
-<<<<<<< HEAD
+
 	        <groupId>org.apache.tomcat.embed</groupId>
 	        <artifactId>tomcat-embed-jasper</artifactId>
         <scope>provided</scope>
@@ -95,21 +94,20 @@
 		   	<groupId>org.json</groupId>
 		   	<artifactId>json</artifactId>
 		   	<version>20201115</version>
-=======
+
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
->>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
+
 		</dependency>
-<<<<<<< HEAD
-=======
+
 		    <!--  json parsing --> 
     	<dependency>           
    			<groupId>org.json</groupId>
    			<artifactId>json</artifactId>
    			<version>20201115</version>
  		</dependency>
->>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
+
 		<!-- 카카오 로그인 api 사용시 필요한 라이브러리 -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
@@ -122,10 +120,7 @@
 		    <artifactId>gson</artifactId>
 		    <version>2.8.5</version>
 		</dependency>
-<<<<<<< HEAD
-=======
-		
->>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
+
 	</dependencies>
 
 	<build>
