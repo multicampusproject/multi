@@ -207,8 +207,7 @@
 								<li class="nav-item">
 								<div class="dropdown">
 								  <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-								    ${vo.member_name} 님
-								    ${vo.member_state } /1이면 관리자 0이면 일반회원임
+								    ${vo.member_id} 님
 								  </a>
 								
 								  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
