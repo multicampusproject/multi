@@ -3,8 +3,10 @@ package user;
 public class HistoryJoinVO {
 
 	int recommend_code;
-	String member_email, image_name, image_emotion, music_artist, music_title, music_url;
+	String member_email, image_name, music_emotion, music_artist, music_title, music_url;
+	int cnt, music_num;
 	
+
 	public String getMember_email() {
 		return member_email;
 	}
@@ -53,13 +55,31 @@ public class HistoryJoinVO {
 		this.recommend_code = recommend_code;
 	}
 
-	public String getImage_emotion() {
-		return image_emotion;
+	public String getMusic_emotion() {
+		return music_emotion;
 	}
 
-	public void setImage_emotion(String image_emotion) {
-		this.image_emotion = image_emotion;
+	public void setMusic_emotion(String music_emotion) {
+		this.music_emotion = music_emotion;
 	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
+	public int getMusic_num() {
+		return music_num;
+	}
+
+	public void setMusic_num(int music_num) {
+		this.music_num = music_num;
+	}
+
+	
 	
 	
 }

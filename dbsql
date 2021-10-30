@@ -1,0 +1,61 @@
+create table multiuser(
+  member_email varchar2(100) constraint multiuser_pk primary key,
+  member_id varchar2(100) constraint multiuser_uk unique not null,
+  member_name varchar2(30) not null,
+  member_state number(1) default 0
+);
+
+create table multimusic(
+    music_num number constraint multimusic_pk primary key,
+    music_artist varchar2(100) not null,
+    music_emotion varchar2(100) not null,
+    music_copyright number not null,
+    music_age number not null,
+    music_gender varchar2(30) not null,
+    music_title varchar2(1000) not null,
+    music_url varchar2(3000) not null
+);
+  
+  
+create table multiimage(
+    image_name varchar2(100) constraint multiimage_pk primary key,
+    image_age number not null,
+    image_gender varchar2(100) not null,
+    image_emotion varchar2(100) not null,
+    member_email varchar2(100) constraint image_member_email_fk references multiuser(member_email) on delete cascade
+);
+
+create table multihistory(
+    recommend_code varchar2(100) constraint multihistory_pk primary key,
+    image_name varchar2(100) constraint history_image_name_fk references multiimage(image_name) on delete cascade,
+    music_num number constraint history_music_num_fk references multimusic(music_num) on delete cascade,
+    member_email varchar2(100) constraint history_member_email_fk references multiuser(member_email) on delete cascade
+);
+
+create table multinotice(
+    notice_code number constraint multinotice_pk primary key,
+    notice_subject varchar2(100) not null,
+    notice_content varchar2(3000) not null,
+    notice_regdate date default sysdate,
+    member_email varchar2(100) constraint notice_member_email_fk references multiuser(member_email) on delete cascade
+);
+
+create table multiqna(
+    qna_code number constraint multiqna_pk primary key,
+    qna_subject varchar2(100) not null,
+    qna_content varchar2(3000) not null,
+    qna_regdate date default sysdate,
+    member_email varchar2(100) constraint qna_member_email_fk references multiuser(member_email) on delete cascade
+);
+
+
+
+
+
+
+
+
+
+
+
+

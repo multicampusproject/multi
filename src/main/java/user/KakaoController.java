@@ -68,13 +68,15 @@ public class KakaoController {
         //JSONObject kakaoInfo =  new JSONObject(userInfo);
         //model.addAttribute("kakaoInfo", kakaoInfo);
         model.addAttribute("email", userInfo.get("email"));
-        if (userInfo.get("email")!=null) {
-        	
-        	String email = userInfo.get("email").toString();
-        	System.out.println(email);
-        	
-        	
-        	UserVO dbvo = service.emailCheck(email);
+        
+        String email = userInfo.get("email").toString();
+        System.out.println(email);
+        
+        
+        UserVO dbvo = service.emailCheck(email);
+        
+        
+   
         	
         	
         	//System.out.println("------------------------------------------------");

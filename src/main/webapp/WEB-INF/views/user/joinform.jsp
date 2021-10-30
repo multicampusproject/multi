@@ -85,57 +85,63 @@
 </script>
 
 </head>
-<body  class="pt-5">
+<body id="page-top">
+        <%@ include file="../common/header.jsp" %>
 
-<div class="text-center container mt-5">
-<main class="form-signin">
-  
-	<div class="container">
-		<form action="${pageContext.request.contextPath}/userjoin" method="post">
-			<table class="table table-hover">
-			  <thead>
-			    <tr>
-			      <th scope="col" colspan="4">회원 가입 양식</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<tr>
-			      <th scope="row">이메일</th>
-			      <td colspan="3">
-			      	<input type="text" class="form-control" value="${member_email}" disabled="disabled">
-			      	<input type="hidden" value="${member_email}" name="email">
-			      </td>
-			    </tr>
-			    <tr>
-			      <th scope="row">아이디</th>
-			      <td><input type="text" class="form-control" id="userid" name="userid"></td>
-			      <td>
-					<span id="ok" class="id_ok">사용 가능한 아이디입니다.</span>
-					<span class="id_already">이미 사용 중인 아이디입니다. 다시 작성해주세요.</span>
-			      </td>
-			      <td>
-			      <button type="button" class="btn btn-secondary" onclick="checkId();">아이디 중복체크</button>
-			      </td>
-			    </tr>
-			    <tr>
-			      <th scope="row">이름</th>
-			      <td colspan="3"><input type="text" class="form-control" id="name" name="name"></td>
-			    </tr>
-			     <tr>
-			      <td colspan="4" >
-			      <input type="submit" class="btn btn-secondary" id="joinBtn" value="회원가입"></td>
-			    </tr>
-			  </tbody>
-			</table>
-		</form>
-	</div>
-</main>
-</div>
+<section class="page-section" id="services">
+            <div class="container mt-5">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">회원 가입</h2>
+                </div>
+                <div class="row text-center pt-3">
+                <div class="container pt-5 pb-5">
+				<form action="${pageContext.request.contextPath}/userjoin" method="post">
+					<table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col" colspan="4">회원 가입 양식</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	<tr>
+					      <th scope="row">이메일</th>
+					      <td colspan="3">
+					      	<input type="text" class="form-control" value="${member_email}" disabled="disabled">
+					      	<input type="hidden" value="${member_email}" name="email">
+					      </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">아이디</th>
+					      <td><input type="text" class="form-control" id="userid" name="userid"></td>
+					      <td>
+							<span id="ok" class="id_ok">사용 가능한 아이디입니다.</span>
+							<span class="id_already">이미 사용 중인 아이디입니다. 다시 작성해주세요.</span>
+					      </td>
+					      <td>
+					      <button type="button" class="btn btn-secondary" onclick="checkId();">아이디 중복체크</button>
+					      </td>
+					    </tr>
+					    <tr>
+					      <th scope="row">이름</th>
+					      <td colspan="3"><input type="text" class="form-control" id="name" name="name"></td>
+					    </tr>
+					     <tr>
+					      <td colspan="4" >
+					      <input type="submit" class="btn btn-secondary" id="joinBtn" value="회원가입"></td>
+					    </tr>
+					  </tbody>
+					</table>
+				</form>
+				</div>
+				</div>
+			</div>
+</section>
 
 <div class="b-example-divider"></div>
 
 
 
+<%@ include file="../common/footer.jsp" %>
 
 
 </body>
