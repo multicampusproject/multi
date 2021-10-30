@@ -91,13 +91,13 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session= request.getSession();
 		session.invalidate();
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		mv.addObject("message", "로그아웃 되었습니다.");
 		mv.setViewName("/index");
 		return mv;
-=======
+//=======
 		return "/index";
->>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
+//>>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
 	}
 	
 	/**

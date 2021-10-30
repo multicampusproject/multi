@@ -10,10 +10,15 @@
 		<typeAlias type="qna.QnAVO" alias="QnAVO" />
 		<typeAlias type="notice.NoticeVO" alias="NoticeVO" />
 		<typeAlias type="reply.ReplyVO" alias="ReplyVO" />
-		<typeAlias type="user.UserVO" alias="userVO"/>
-		<typeAlias type="user.HistoryJoinVO" alias="historyjoinVO"/>
-		<typeAlias type="gallery.MusicVO"   alias="musicVO" />
- 		<typeAlias alias="music" type="musiclist.MusicListVO"/>
+		<typeAlias type="user.UserVO" alias="userVO" />
+		<typeAlias type="user.HistoryJoinVO" alias="historyjoinVO" />
+		<typeAlias type="gallery.MusicVO" alias="musicVO" />
+		<typeAlias alias="music" type="musiclist.MusicListVO" />
+		<typeAlias type="profile.KakaoImageVO" alias="imageVO" />
+		<typeAlias type="profile.KakaoMusicVO" alias="PmusicVO" />
+		<typeAlias type="profile.KakaoHistoryVO" alias="historyVO" />
+
+
 	</typeAliases>
 
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="profile.KakaoProfileDAO" >
+
+
+<insert id="insertImage" parameterType="imageVO">
+ insert into multiimage values
+ (#{image_name}, #{image_age}, #{image_gender}, #{image_emotion}, #{member_email})
+</insert>
+
+<select id="selectMusic" parameterType="imageVO" resultType="PmusicVO">
+select * from multimusic 
+where music_emotion=#{image_emotion} and music_age=#{image_age} and music_gender=#{image_gender}
+</select>
+
+<insert id="insertHistory" parameterType="historyVO">
+insert into multihistory(image_name, music_num, member_email) values(
+#{image_name}, #{music_num}, #{member_email});
+</insert>
+
+<select id="selectMusic2" parameterType="imageVO" resultType="PmusicVO">
+select * from multimusic 
+where music_emotion=#{image_emotion} and music_age=#{image_age} and music_gender=#{image_gender}
+</select>
+
+
+
+</mapper>
