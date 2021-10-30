@@ -5,6 +5,7 @@
   <!-- mybatis db 연결정보 세팅 파일 -->
 <configuration>
 
+<<<<<<< HEAD
 <!-- 1. sql 실행 결과 EmpVO 매핑 -->
 <typeAliases>
    <typeAlias
@@ -13,4 +14,15 @@
   type="gallery.MusicVO"   alias="musicVO" />
 </typeAliases>
 
+=======
+	<!-- db에서 받아와서 매핑할 클래스 -->
+	<typeAliases>
+		<typeAlias type="user.UserVO" alias="userVO"/>
+		<typeAlias type="user.HistoryJoinVO" alias="historyjoinVO"/>
+		<typeAlias alias="music" type="musiclist.MusicListVO"/>
+	</typeAliases>
+	
+	
+	
+>>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
 </configuration>

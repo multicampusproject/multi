@@ -27,7 +27,11 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
+<<<<<<< HEAD
         <script src="../resources/static/js/scripts.js"></script>
+=======
+        <script src="js/scripts.js"></script>
+>>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

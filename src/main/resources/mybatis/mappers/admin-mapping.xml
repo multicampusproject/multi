@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin.AdminDAO">
+	<!-- 회원 list -->
+	<select id="selectAll" resultType="userVO">
+		select * from multiuser
+	</select>
+	
+	<!-- id에 해당하는 회원정보 -->
+	<select id="selectById" resultType="userVO">
+		select * from multiuser
+		where member_id = #{member_id}
+	</select>
+	
+	<!-- 관리자로 회원상태변경 -->
+	<update id="updateState1" parameterType="string">
+		update multiuser
+		set member_state = 1
+		where member_id = #{member_id}
+	</update>
+	
+	<!-- 일반회원으로 회원상태변경 -->
+	<update id="updateState0" parameterType="string">
+		update multiuser
+		set member_state = 0
+		where member_id = #{member_id}
+	</update>
+	
+	<!-- 감정통계  -->
+	<select id="countByEmotion" resultType="historyjoinVO">
+		select m.music_emotion, count(music_emotion) as cnt
+		from multihistory h, multimusic m
+		where h.music_num = m.music_num
+		group by m.music_emotion
+	</select>
+	
+	<!-- 음악통계 -->
+	<select id="countByMusic" resultType="historyjoinVO">
+		select h.music_num, count(h.music_num) as cnt, m.music_artist, m.music_title
+		from multihistory h, multimusic m
+		where h.music_num = m.music_num
+		group by m.music_num
+	</select>
+
+</mapper>
