@@ -3,6 +3,11 @@ package edu.spring.multi;
 import gallery.GalleryController;
 import gallery.MusicDAO;
 
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
 import admin.AdminController;
 import admin.AdminDAO;
 import musiclist.MusicListController;
@@ -18,8 +23,6 @@ import user.UserDAO;
 @ComponentScan(basePackageClasses = UserController.class)
 @ComponentScan(basePackageClasses = AdminController.class)
 @ComponentScan(basePackageClasses = MusicListController.class)
-
-
 @MapperScan(basePackageClasses = UserDAO.class)
 @MapperScan(basePackageClasses = AdminDAO.class)
 @MapperScan(basePackageClasses = MusicListDAO.class)

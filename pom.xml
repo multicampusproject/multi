@@ -63,7 +63,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -75,8 +74,6 @@
    			<artifactId>json</artifactId>
    			<version>20201115</version>
  		</dependency>
-=======
-		
 		<!-- for jsp -->
 		<dependency>
 	        <groupId>org.apache.tomcat.embed</groupId>
@@ -114,8 +111,6 @@
 		    <version>2.8.5</version>
 		</dependency>
 		
-		
->>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
 	</dependencies>
 
 	<build>
