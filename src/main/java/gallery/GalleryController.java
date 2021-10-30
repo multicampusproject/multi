@@ -19,10 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class GalleryController {
 	@Autowired
 
-	@RequestMapping(value="/index")
-	public String Main() {
-		return "/index";
-	}
+	/*
+	 * @RequestMapping(value="/index") public String Main() { return "/index"; }
+	 */
 	@RequestMapping(value="/index#portfolio")
 	public String Main1() {
 		return "/upload/uploadform";
