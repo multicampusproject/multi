@@ -40,16 +40,14 @@ public class UserController {
 	}
 	
 	
-	/**
-	 * 임시메인
-	 * */
-	@RequestMapping("/testmain")
-	public String testmain() {
-		return "/user/main";
-	}
-	
 	@RequestMapping("/index")
-	public String index() {
+	public String index(HttpSession session) {
+		UserVO vo = (UserVO)session.getAttribute("vo");
+		if(vo != null) {
+			UserVO dbvo = service.emailCheck(vo.getMember_email());
+			session.setAttribute("isLogOn", true);
+			session.setAttribute("vo", dbvo);
+		}
 		return "index";
 	}
 	/**
@@ -91,30 +89,11 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session= request.getSession();
 		session.invalidate();
-<<<<<<< HEAD
 		mv.addObject("message", "로그아웃 되었습니다.");
 		mv.setViewName("/index");
 		return mv;
-=======
-		return "/index";
->>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
 	}
 	
-	/**
-	 * 마이페이지
-	 * */
-	/*@RequestMapping("/mypage")
-	public String mypage(HttpServletRequest request) {
-		//로그인유무 확인하고 로그인안했으면 메인으로 이동
-		HttpSession session = request.getSession();
-		if(session.getAttribute("vo") != null) {//로그인상태
-			return "/user/mypage";
-		}else {//비로그인
-			//컨트롤러에서 alert를 띄울 수 있나?? 찾아보기 찾을 수 있으면 로그인하고 이용해주세요 안내
-			return "/user/main";
-		}
-		
-	}*/
 	
 	/**
 	 * 내 정보 확인페이지

@@ -95,10 +95,6 @@ public class KakaoController {
         		model.addAttribute("message", "로그인 되었습니다.");
         		return "/index"; //메인페이지로 이동
         	}
-        } else {
-        	return "/index";
-        }
-        
         //return "/user/test"; //본인 원하는 경로 설정
 	}
 	
