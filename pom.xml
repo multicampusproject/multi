@@ -95,7 +95,7 @@
 		   	<artifactId>json</artifactId>
 		   	<version>20201115</version>
 
-			<groupId>org.springframework.boot</groupId>
+		<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 
