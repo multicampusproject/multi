@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="reply.ReplyDAO">
+	
+	<select id="getNoticeReply" resultType="ReplyVO" parameterType="ReplyVO">
+		select * from multireply where notice_code=#{notice_code} and reply_number=#{reply_number}
+	</select>
+	
+	<select id="getQnAReply" resultType="ReplyVO" parameterType="ReplyVO">
+		select * from multireply where qna_code=#{qna_code} and reply_number=#{reply_number}
+	</select>	
+	
+	<select id="noticeReplyList" resultType="ReplyVO" parameterType="int">
+		select * from multireply where notice_code=#{notice_code}
+	</select>
+	
+	<select id="qnaReplyList" resultType="ReplyVO" parameterType="int">
+		select * from multireply where qna_code=#{qna_code}
+	</select>
+
+
+	<insert id="insertNoticeReply" parameterType="ReplyVO">	
+		insert into multireply(member_email, notice_code, reply_content, reply_regdate)
+		values(#{member_email}, #{notice_code}, #{reply_content}, now())
+	</insert>
+	
+	<insert id="insertQnAReply" parameterType="ReplyVO">	
+		insert into multireply(member_email, qna_code, reply_content, reply_regdate)
+		values(#{member_email}, #{qna_code}, #{reply_content}, now())
+	</insert>
+
+	<update id="updateNoticeReply" parameterType="ReplyVO">
+		update multireply set reply_content = #{reply_content}
+		where member_email = #{member_email} and notice_code = #{notice_code} and reply_number = #{reply_number}
+	</update>
+	
+	<update id="updateQnAReply" parameterType="ReplyVO">
+		update multireply set reply_content = #{reply_content}
+		where member_email = #{member_email} and qna_code = #{qna_code} and reply_number = #{reply_number}
+	</update>
+	
+	<delete id="deleteNoticeReply" parameterType="ReplyVO">
+		delete from multireply where notice_code = #{notice_code} and reply_number = #{reply_number}
+	</delete>
+	
+	<delete id="deleteQnAReply" parameterType="ReplyVO">
+		delete from multireply where qna_code = #{qna_code} and reply_number = #{reply_number}
+	</delete>
+		
+</mapper>

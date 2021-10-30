@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="notice.NoticeDAO">
+	
+	<select id="noticeList" resultType="NoticeVO">
+		select * from multinotice
+	</select>
+	
+	<select id="cnt" resultType="int">
+		select count(notice_code) from multinotice
+	</select>
+
+	
+	<select id="noticeHistory" resultType="NoticeVO" parameterType="String">
+		select * from multinotice where member_email = #{member_email}
+	</select>
+	
+	<select id="noticeOne" resultType="NoticeVO" parameterType="int">
+		select * from multinotice where notice_code = #{notice_code}
+	</select>
+
+	<insert id="insertNotice" parameterType="NoticeVO">	
+		insert into multinotice(member_email, notice_content, notice_subject, notice_regdate)
+		values (#{member_email}, #{notice_content}, #{notice_subject}, now())
+	</insert>
+
+	<update id="updateNotice" parameterType="NoticeVO">
+		update multinotice set notice_content = #{notice_content}, notice_subject = #{notice_subject}
+		where member_email = #{member_email} and notice_code = ${notice_code}
+	</update>
+	
+	<delete id="deleteNotice" parameterType="int">
+		delete from multinotice where notice_code = #{notice_code}
+	</delete>
+
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="listPage" resultType="NoticeVO" parameterType="HashMap">
+		select * from multinotice order by notice_code desc limit #{displayPost}, #{postNum}
+
+	</select>
+	
+</mapper>

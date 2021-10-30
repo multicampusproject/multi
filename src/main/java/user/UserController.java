@@ -48,6 +48,10 @@ public class UserController {
 		return "/user/main";
 	}
 	
+	@RequestMapping("/index")
+	public String index() {
+		return "index";
+	}
 	/**
 	 * 아이디중복체크
 	 * */
@@ -82,11 +86,18 @@ public class UserController {
 	 * 로그아웃
 	 * */
 	@RequestMapping("/userlogout")
-	public String userlogout(HttpServletRequest request) {
+	public ModelAndView userlogout(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		session= request.getSession();
 		session.invalidate();
+<<<<<<< HEAD
+		mv.addObject("message", "로그아웃 되었습니다.");
+		mv.setViewName("/index");
+		return mv;
+=======
 		return "/index";
+>>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
 	}
 	
 	/**
