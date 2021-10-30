@@ -90,7 +90,7 @@ public class KakaoController {
         	session.setAttribute("isLogOn", true);
         	session.setAttribute("vo", dbvo);
         	
-        	return "/user/main"; //메인페이지로 이동
+        	return "/index"; //메인페이지로 이동
         }
         
         //return "/user/test"; //본인 원하는 경로 설정

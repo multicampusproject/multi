@@ -50,45 +50,55 @@
 </script>
 
 </head>
-<body  class="pt-5">
+    <body id="page-top">
+        <%@ include file="../common/header.jsp" %>
 
+        <section class="page-section" id="services">
+            <div class="container mt-5">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">${vo.member_id}님 회원 정보</h2>
+                </div>
+                <div class="row text-center pt-3">
+                <div class="container pt-5 pb-5">
+					<form action="${pageContext.request.contextPath}/updatemyinfo" method="post">
+						<table class="table table-hover">
+						  <thead>
+						    <tr>
+						      <th scope="col" colspan="2" >${dbvo.member_name}님 회원 정보</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  	<tr>
+						      <th scope="row">이메일</th>
+						      <td>
+						      	<input type="text" class="form-control" value="${dbvo.member_email}" disabled="disabled">
+						      	<input type="hidden" value="${dbvo.member_email}" name="member_email">
+						      </td>
+						    </tr>
+						    <tr>
+						      <th scope="row">아이디</th>
+						      <td><input type="text" class="form-control" id="userid" name="member_id" value="${dbvo.member_id}" disabled="disabled"></td>
+						    </tr>
+						    <tr>
+						      <th scope="row">이름</th>
+						      <td><input type="text" class="form-control" id="name" name="member_name" value="${dbvo.member_name}"></td>
+						    </tr>
+						     <tr>
+						      <td  colspan="2">
+						      <input type="submit" class="btn btn-warning" id="joinBtn" value="이름 수정">
+						      <a class="btn btn-outline-warning" href="${pageContext.request.contextPath}/h">메인으로 가기</a></td>
+						    </tr>
+						  </tbody>
+						</table>
+					</form>
+				</div>
+                </div>
+            </div>
+        </section>
 <div class="text-center container mt-5">
 <main class="form-signin">
   
-	<div class="container">
-		<form action="${pageContext.request.contextPath}/updatemyinfo" method="post">
-			<table class="table table-hover">
-			  <thead>
-			    <tr>
-			      <th scope="col" colspan="2" >${dbvo.member_name}님 정보 확인</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<tr>
-			      <th scope="row">이메일</th>
-			      <td>
-			      	<input type="text" class="form-control" value="${dbvo.member_email}" disabled="disabled">
-			      	<input type="hidden" value="${dbvo.member_email}" name="member_email">
-			      </td>
-			    </tr>
-			    <tr>
-			      <th scope="row">아이디</th>
-			      <td><input type="text" class="form-control" id="userid" name="member_id" value="${dbvo.member_id}" disabled="disabled"></td>
-			      <td>
-			      </td>
-			    </tr>
-			    <tr>
-			      <th scope="row">이름</th>
-			      <td><input type="text" class="form-control" id="name" name="member_name" value="${dbvo.member_name}"></td>
-			    </tr>
-			     <tr>
-			      <td colspan="2" >
-			      <input type="submit" class="btn btn-secondary" id="joinBtn" value="이름 수정"></td>
-			    </tr>
-			  </tbody>
-			</table>
-		</form>
-	</div>
+	
 </main>
 </div>
 
@@ -97,6 +107,6 @@
 
 
 
-
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

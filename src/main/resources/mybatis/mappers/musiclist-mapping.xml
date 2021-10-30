@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- musiclist 테이블 sql -->
+<mapper namespace="musiclist.MusicListDAO" >
+
+<!--  
+<select id="multimusicCount" resultType="music">
+select count(*) from multimusic
+</select>
+-->
+
+<select id="multimusicList" resultType="music">
+select * from multimusic
+</select>
+
+<!-- 
+<select id="multimusicDetail" parameterType="String" resultType="music">
+ select * from multimusic where music_num=#{music_num};
+</select>
+-->
+
+<insert id="multimusicInsert" parameterType="music">
+insert into multimusic(music_artist, music_emotion, music_age, music_gender, music_title, music_url) 
+values(#{music_artist}, #{music_emotion}, #{music_age}, 
+	   #{music_gender}, #{music_title}, #{music_url})
+</insert>
+
+<update id="multimusicUpdate" parameterType="music">
+update multimusic
+        set music_title = #{music_title}
+        WHERE Music No = #{music_num}
+</update>
+
+<delete id="multimusicDelete" parameterType="int">
+		delete from multimusic where music_num = #{music_num}
+</delete>
+
+</mapper>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+

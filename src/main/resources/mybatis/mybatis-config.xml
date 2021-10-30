@@ -9,6 +9,7 @@
 	<typeAliases>
 		<typeAlias type="user.UserVO" alias="userVO"/>
 		<typeAlias type="user.HistoryJoinVO" alias="historyjoinVO"/>
+		<typeAlias alias="music" type="musiclist.MusicListVO"/>
 	</typeAliases>
 	
 	

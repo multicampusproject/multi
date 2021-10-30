@@ -31,13 +31,13 @@
 	
 	<!-- 회원정보 삭제 -->
 	<delete id="deleteInfo" parameterType="string">
-		delete multiuser
+		delete from multiuser
 		where member_email = #{member_email}
 	</delete>
 	
 	<!-- 추천히스토리 검색 -->
 	<select id="historyByEmail" resultType="historyjoinVO" parameterType="string">
-		select h.recommend_code, h.member_email, i.image_name, i.image_emotion, m.music_artist, m.music_title, m.music_url
+		select h.recommend_code, h.member_email, i.image_name, m.music_emotion, m.music_artist, m.music_title, m.music_url
 		from multihistory h, multiimage i, multimusic m
 		where h.image_name = i.image_name and h.music_num= m.music_num and h.member_email = #{member_email}
 		order by h.recommend_code

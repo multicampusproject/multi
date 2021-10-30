@@ -23,6 +23,22 @@ public class UserController {
 	@Qualifier("userservice")
 	UserService service;
 
+	/**
+	 * 메인
+	 * */
+	@RequestMapping("/h")
+	public String hh(HttpSession session) {
+		UserVO vo = (UserVO)session.getAttribute("vo");
+		if(vo != null) {
+			UserVO dbvo = service.emailCheck(vo.getMember_email());
+			session.setAttribute("isLogOn", true);
+			session.setAttribute("vo", dbvo);
+		}
+		
+		
+		return "/index";
+	}
+	
 	
 	/**
 	 * 임시메인
@@ -59,7 +75,7 @@ public class UserController {
 		System.out.println("===="+name+"====");
 		service.userjoin(vo);
 		
-		return "/user/main";//회원가입 후 메인페이지로 이동
+		return "/index";//회원가입 후 메인페이지로 이동
 	}
 	
 	/**
@@ -70,7 +86,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session= request.getSession();
 		session.invalidate();
-		return "/user/main";
+		return "/index";
 	}
 	
 	/**
@@ -128,7 +144,7 @@ public class UserController {
 		System.out.println(vo.getMember_email());
 		service.deleteInfo(vo.getMember_email());
 		session.invalidate();
-		return "redirect:/testmain";
+		return "redirect:/h";
 	}
 	
 	/**
@@ -150,6 +166,7 @@ public class UserController {
 			System.out.println(h.getMusic_artist());
 			System.out.println(h.getMusic_title());
 			System.out.println(h.getMusic_url());
+			System.out.println(h.getMusic_emotion());
 		}
 		
 		ModelAndView mv = new ModelAndView();
