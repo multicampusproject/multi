@@ -74,30 +74,6 @@
    			<artifactId>json</artifactId>
    			<version>20201115</version>
  		</dependency>
-		<!-- for jsp -->
-		<dependency>
-	        <groupId>org.apache.tomcat.embed</groupId>
-	        <artifactId>tomcat-embed-jasper</artifactId>
-	        <scope>provided</scope>
-	    </dependency>
-		<!-- for jsp jstl -->
-	    <dependency>
-	        <groupId>javax.servlet</groupId>
-	        <artifactId>jstl</artifactId>
-	    </dependency>
-	    <!--for tomcat restart -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <!-- json 데이터 parsing을 위한 라이브러리 -->
-        <dependency>           
-		   <groupId>org.json</groupId>
-		   <artifactId>json</artifactId>
-		   <version>20201115</version>
-		</dependency>
-		
 		<!-- 카카오 로그인 api 사용시 필요한 라이브러리 -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
