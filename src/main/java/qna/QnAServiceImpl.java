@@ -1,11 +1,14 @@
 package qna;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+
+import notice.NoticeVO;
 
 
 @Service
@@ -48,6 +51,15 @@ public class QnAServiceImpl implements QnAService {
 	public void deleteQnA(int code) {
 		dao.deleteQnA(code);
 	}
-
+	
+	@Override
+	public int cnt() {
+		return dao.cnt();
+	}
+	
+	@Override
+	public List<QnAVO> listPage(int displayPost, int postNum) {
+		return dao.listPage(displayPost, postNum);
+	}
 	
 }

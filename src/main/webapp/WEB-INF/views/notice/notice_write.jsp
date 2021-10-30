@@ -5,25 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 글쓰기 화면</title>
+<link href="/resources/static/css/styles.css" rel="stylesheet" />
+<script src="jquery-3.2.1.min.js"></script>
 </head>
 <body>
+<div class="container">
+<div class="mb-5">
+<%@ include file="../common/header.jsp" %>
+<br><br>
+</div>
+<div class="container">
+<div class="row">
 <form action="/noticewriteaction" method="POST">
-	<table style="text-align:center; border: 1px solid #dddddd">
-		<thead>
-			<tr>
-				<th colspan="2" style="background-color: #eeeeee; text-align:center; width:1000px">게시판 글쓰기 양식</th>
-			</tr>
-		</thead>	
-		</tbody>	
-			<tr>
-				<td><input type="text" class="form-control" placeholder="글 제목" name="notice_title" maxlength="50" style="width:1000px"></td>
-			</tr>
-			<tr>
-				<td><textarea class="form-control" placeholder="글 내용" name="notice_content" maxlength="2048" style="height:350px; width:1000px "></textarea></td>
-			</tr>
-		</tbody>	
-	</table>
-	<input type="submit" class="btn" value="글쓰기">
+	
+	<div class="mt-3">
+		<h3 class="align-self-center pt-5 section-heading text-center" >공지사항 글쓰기</h3>	
+		<h6 class="text-center section-subheading text-muted fw-lighter">Notice Writing</h6>
+		<br>
+		<input type="text" class="form-control mb-3" placeholder="글 제목" name="notice_title" maxlength="50">
+		<textarea class="form-control" placeholder="글 내용" name="notice_content" maxlength="2048" style="height:350px;"></textarea>
+		<input type="submit" class="btn btn-primary mt-3" value="등록">
+	</div>
 </form>
+</div>
+</div>
+</div>
 </body>
 </html>

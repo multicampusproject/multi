@@ -5,6 +5,14 @@
 
 <mapper namespace="reply.ReplyDAO">
 	
+	<select id="getNoticeReply" resultType="ReplyVO" parameterType="ReplyVO">
+		select * from multireply where notice_code=#{notice_code} and reply_number=#{reply_number}
+	</select>
+	
+	<select id="getQnAReply" resultType="ReplyVO" parameterType="ReplyVO">
+		select * from multireply where qna_code=#{qna_code} and reply_number=#{reply_number}
+	</select>	
+	
 	<select id="noticeReplyList" resultType="ReplyVO" parameterType="int">
 		select * from multireply where notice_code=#{notice_code}
 	</select>

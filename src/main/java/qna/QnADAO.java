@@ -2,9 +2,12 @@ package qna;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import notice.NoticeVO;
 
 
 @Mapper //@Mapper-scan 어노테이션 스프링 시작파일에서 설정
@@ -31,7 +34,9 @@ public interface QnADAO { //DAO = 데이터가 있는 곳에 직접 가서 접�
 	
 	public void deleteQnA(int code);
 	
+	public int cnt();
 	
+	public List<QnAVO> listPage(int displayPost, int postNum);
 	
 
 }

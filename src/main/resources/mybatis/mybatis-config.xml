@@ -10,5 +10,8 @@
 		<typeAlias type="qna.QnAVO" alias="QnAVO" />
 		<typeAlias type="notice.NoticeVO" alias="NoticeVO" />
 		<typeAlias type="reply.ReplyVO" alias="ReplyVO" />
+		<typeAlias type="user.UserVO" alias="userVO"/>
+		<typeAlias type="user.HistoryJoinVO" alias="historyjoinVO"/>
 	</typeAliases>
 </configuration>
+<!-- >>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git -->

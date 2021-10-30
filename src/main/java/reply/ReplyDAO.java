@@ -19,6 +19,10 @@ public interface ReplyDAO { //DAO = 데이터가 있는 곳에 직접 가서 접
 	//3.EmpService, EmpServiceImpl 주석해제. dao 호출메소드 수정
 	//4.컨트롤러 getdeptlist 주석 해제 후 실행
 	
+	public ReplyVO getNoticeReply(ReplyVO vo);
+	
+	public ReplyVO getQnAReply(ReplyVO vo);
+	
 	public ReplyVO[] noticeReplyList(int code);
 	
 	public ReplyVO[] qnaReplyList(int code); 

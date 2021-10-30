@@ -3,6 +3,11 @@ package reply;
 import java.util.ArrayList;
 
 public interface ReplyService {
+	
+	public ReplyVO getNoticeReply(ReplyVO vo);
+	
+	public ReplyVO getQnAReply(ReplyVO vo);
+	
 	public ReplyVO[] noticeReplyList(int code);
 	
 	public ReplyVO[] qnaReplyList(int code); 

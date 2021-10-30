@@ -1,6 +1,7 @@
 package notice;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,5 +50,17 @@ public class NoticeServiceImpl implements NoticeService {
 		dao.deleteNotice(code);
 	}
 
+	@Override
+	public int cnt() {
+		return dao.cnt();
+	}
+
+	@Override
+	public List<NoticeVO> listPage(int displayPost, int postNum) {
+		return dao.listPage(displayPost, postNum);
+	}
+
+
+	
 	
 }

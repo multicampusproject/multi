@@ -2,6 +2,7 @@ package notice;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -31,7 +32,10 @@ public interface NoticeDAO { //DAO = 데이터가 있는 곳에 직접 가서 �
 	
 	public void deleteNotice(int code);
 	
+	public int cnt();
 	
+	public List<NoticeVO> listPage(int displayPost, int postNum);
 	
+
 
 }

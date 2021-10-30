@@ -14,6 +14,17 @@ public class ReplyServiceImpl implements ReplyService {
 	@Autowired //만들어진 dao 를 자동으로 나에게 주입해줘 - setter 뺌
 	ReplyDAO dao;
 	
+	
+	@Override
+	public ReplyVO getNoticeReply(ReplyVO vo) {
+		return dao.getNoticeReply(vo);
+	}
+
+	@Override
+	public ReplyVO getQnAReply(ReplyVO vo) {
+		return dao.getQnAReply(vo);
+	}
+
 	@Override
 	public ReplyVO[] noticeReplyList(int code) {
 		return dao.noticeReplyList(code);

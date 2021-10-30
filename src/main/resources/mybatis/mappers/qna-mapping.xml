@@ -6,7 +6,11 @@
 	<select id="qnaList" resultType="QnAVO">
 		select * from multiqna;
 	</select>
-
+	
+	<select id="cnt" resultType="int">
+		select count(qna_code) from multiqna
+	</select>
+	
 	<select id="qnaOne" resultType="QnAVO" parameterType="int">
 		select * from multiqna where qna_code = #{code}
 	</select>
@@ -25,4 +29,9 @@
 	<delete id="deleteQnA" parameterType="QnAVO">
 		delete from multiqna where qna_code = #{qna_code}
 	</delete>
+
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="listPage" resultType="QnAVO" parameterType="HashMap">
+		select * from multiqna order by qna_code desc limit #{displayPost}, #{postNum}
+	</select>	
 </mapper>

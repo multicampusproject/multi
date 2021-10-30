@@ -6,8 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 글 보기화면</title>
+<link href="/resources/static/css/styles.css" rel="stylesheet" />
 <script src="jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
+//로그인 안하고 댓글달면 alert 
+var message = '${param.message}'
+
+if (message!="") {
+	alert(message);
+}
+
 /*$(document).ready(function() {
 	//댓글 수정
 	$("#commentUpdateBtn").on("click", function(){
@@ -56,7 +64,7 @@ function updateReply(replyNumber, noticeCode){
 	 //} else {
 		 //if (email == request.getParameter("vo.member_email")){
 			 //글 수정 페이지로 이동
-			 //location.href="/noticeupdate?code="+${vo.notice_code}; //요기 수정하기
+			 //location.href="/noticeupdate?code="+${nvo.notice_code}; //요기 수정하기
 		 //}
 	 //}
 //}
@@ -65,88 +73,109 @@ function updateReply(replyNumber, noticeCode){
 
 </head>
 <body>
-
-<table border="1"  style="width:1000px; text-align:center; border-collapse:collapse;">
+<div class="container">
+<div class="mb-5">
+	<%@ include file="../common/header.jsp" %>
+	<br><br>
+</div>
+<br>
+<div class="container align-items-center">
+<div class="row">
+<div>
+<table class="table table-bordered" style="text-align:center">
 	<tr>
 		<th style="width:100px">글 번호</th>
-		<th>${vo.notice_code}</th>
+		<th>${nvo.notice_code}</th>
 	</tr>
 	<tr>
 		<th style="width:100px">글 제목</th>
-		<th>${vo.notice_subject}</th>
+		<th>${nvo.notice_subject}</th>
 	</tr>
 	<tr>
 		<td>작성자</td>
-		<td>${vo.member_email}</td>
+		<td>${nvo.member_email}</td>
 	</tr>
 	<tr>
 		<td>작성일</td>
-		<td>${vo.notice_regdate}</td>
+		<td>${nvo.notice_regdate}</td>
 	</tr>
 	<tr>
-		<td style="height:400px">글 내용</td>
-		<td>${vo.notice_content}</td>
+		<td class="align-middle" style="height:400px">글 내용</td>
+		<td class="align-middle">${nvo.notice_content}</td>
 	</tr>
-</table><br>
-
-<div id = "UpdateBtn" style="display:block">
-	<button id="noticeUpdateBtn" name="noticeUpdateBtn" onclick="location.href='/noticeupdate?code=${vo.notice_code}'">글 수정하기</button>
-	<button id="noticeDeleteBtn" name="noticeDeleteBtn" onclick="location.href='/noticedelete?code=${vo.notice_code}'">글 삭제</button>
+</table>
 </div>
-<br>
-<button id = "listBtn" onclick="location.href='notice'; return false;">목록으로 이동</button>
-<br>
-
-<br>
-<div id="comments">
-	<div id="comment=head" style="height:30px">
-		Comments
+<div id = "UpdateBtn">
+	<c:if test="${vo.member_state == 1 }">
+	<button class="btn btn-primary" id="noticeUpdateBtn" name="noticeUpdateBtn" onclick="location.href='/noticeupdate?code=${nvo.notice_code}'">글 수정하기</button>
+	<button class="btn btn-danger" id="noticeDeleteBtn" name="noticeDeleteBtn" onclick="location.href='/noticedelete?code=${nvo.notice_code}'">글 삭제</button>
+	</c:if>
+	<button class="btn btn-light " id = "listBtn" onclick="location.href='notice'; return false;">목록으로 이동</button>
+</div>
+</div>
+</div>
+<div class="container mt-5">
+<div class="row">
+<div id="comments" class="my-3">
+	<div>
+		<h3>Comments</h3>
 	</div>
-	<form id="commentForm" name="commentForm" method="post">
-		<textarea id="comment" name="comment" style="width: 1000px" rows="3" placeholder="댓글을 입력하세요"></textarea> <br>
-		<input type="submit" value="등록" formaction="/noticeInsertReply?code=${vo.notice_code}">
-		<input type="submit" value="취소" formaction="/noticeDeleteReply" >
+	<form class="form-control p-3" id="commentForm" name="commentForm" method="post">
+		<textarea class="form-control input-group input-group-text my-3" id="comment" name="comment" rows="3" placeholder="댓글을 입력하세요"></textarea>
+		<input class="btn btn-primary" type="submit" value="등록" formaction="/noticeInsertReply?code=${nvo.notice_code}">
+		<input class="btn btn-secondary" type="submit" value="취소" formaction="/noticeDeleteReply" >
 	</form>
 </div><br>
-
+</div>
+</div>
 <!-- 댓글 리스트(작성자, 내용, 날짜, 수정하기) 보이게 구현하기 -->
-
+<div class="container mt-5">
+<div class="row">
 <c:if test="${replyList != null }">
 	<c:forEach items="${replyList}" var="ReplyVO">
 		<c:choose>
 			<c:when test="${ flag == 'u' && number == ReplyVO.reply_number }">
-				<form method="post" action="/noticeUpdateReplyAction">
-				<div style="width:600px; padding: 5px 5px 5px 5px;">
-					<div style="width:600px">
+				<form  class="mb-5" method="post" action="/noticeUpdateReplyAction">
+				<div>
+					<div>
 						<div style="float:right">${ReplyVO.reply_regdate}</div>
-						<div style="float:left">${ReplyVO.member_email}</div>
+						<div style="float:left"><h5>${ReplyVO.member_email}</h5></div>
 					</div><br>
-					<hr style="border:0px; height:0.5px; background-color:gray">
-					<textarea name="comment" placeholder="댓글 수정">${ReplyVO.reply_content}</textarea>
+					<hr style="border:0px; background-color:gray">
+					<textarea class="form-control mb-3" name="comment" placeholder="댓글 수정">${ReplyVO.reply_content}</textarea>
 				</div>
-				<input type="hidden" value="${vo.notice_code}" name="noticeCode">
+				<input type="hidden" value="${nvo.notice_code}" name="noticeCode">
 				<input type="hidden" value="${ReplyVO.reply_number}" name="replyNumber">
-				<input type="submit" value="등록">
-				<input type="button" onclick="location.href='noticeview?code=${vo.notice_code}'" value="취소">
+				<input class="btn btn-primary btn-sm" type="submit" value="등록">
+				<input class="btn btn-light btn-sm" type="button" onclick="location.href='noticeview?code=${nvo.notice_code}'" value="취소">
 				</form>
 				<br><br>
 			</c:when>
 			<c:otherwise>
-				<div style="width:600px; padding: 5px 5px 5px 5px;">
-					<div style="width:600px">
+				<div>
+					<div>
 						<div style="float:right">${ReplyVO.reply_regdate}</div>
-						<div style="float:left">${ReplyVO.member_email}</div>
+						<div style="float:left"><h5>${ReplyVO.member_email}</h5></div>
 					</div><br>
-					<hr style="border:0px; height:0.5px; background-color:gray">
-					<div style="white-space:pre">${ReplyVO.reply_content}</div>
+					<hr>
+					<div>${ReplyVO.reply_content}</div>
+					<br>
 				</div>
-				<button onclick="location.href='noticeDeleteReply?code=${vo.notice_code}&number=${ReplyVO.reply_number}'">삭제</button>
-				<button onclick="location.href='noticeUpdateReply?code=${vo.notice_code}&number=${ReplyVO.reply_number}'">수정</button>
-				<br><br>
+				<div class="mb-5">
+				<c:if test="${vo.member_email == ReplyVO.member_email }">
+					<button class="btn btn-light btn-sm"  onclick="location.href='noticeUpdateReply?code=${nvo.notice_code}&number=${ReplyVO.reply_number}'">수정</button>
+					<button class="btn btn-danger btn-sm"  onclick="location.href='noticeDeleteReply?code=${nvo.notice_code}&number=${ReplyVO.reply_number}'">삭제</button>
+				</c:if>
+				</div>
+				
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 </c:if>
-
+</div>
+</div>
+<br><br><br>
+<%@ include file="../common/footer.jsp" %>
+</div>
 </body>
 </html>

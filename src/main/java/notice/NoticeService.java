@@ -1,6 +1,7 @@
 package notice;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface NoticeService {
 	public NoticeVO[] noticeList();
@@ -15,5 +16,8 @@ public interface NoticeService {
 	
 	public void deleteNotice(int code);
 	
+	public int cnt();
 	
+	public List<NoticeVO> listPage(int displayPost, int postNum);
+
 }
