@@ -82,7 +82,7 @@ if (message!="") {
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#services" style="color:white">프로필 음악 추천</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio" style="color:white">영상 음악 추천</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/galleryupload" style="color:white">갤러리 음악 추천</a></li>
                         <li class="nav-item"><a class="nav-link" href="notice?num=1" style="color:white">공지사항</a></li>
                         <li class="nav-item"><a class="nav-link" href="qna?num=1" style="color:white">QnA</a></li>
 

@@ -4,8 +4,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-//<<<<<<< HEAD
-//=======
 
 import admin.AdminController;
 import admin.AdminDAO;
@@ -22,7 +20,7 @@ import qna.QnADAO;
 import reply.ReplyDAO;
 import user.UserController;
 import user.UserDAO;
-//>>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
+
 
 @ComponentScan(basePackageClasses = ReplyDAO.class)
 @MapperScan(basePackageClasses = ReplyDAO.class)
