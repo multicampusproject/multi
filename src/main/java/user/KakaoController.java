@@ -48,7 +48,13 @@ public class KakaoController {
 			UserVO dbvo = service.emailCheck(vo.getMember_email());
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("vo", dbvo);
-			session.setAttribute("imageurl", userInfo.get("profile").toString());
+			//session.setAttribute("imageurl", userInfo.get("profile").toString());
+			session.setAttribute("userId", userInfo.get("email"));
+			session.setAttribute("userName", userInfo.get("nickname"));
+			session.setAttribute("userAge", userInfo.get("age"));
+			session.setAttribute("userProfile", userInfo.get("profile"));
+			session.setAttribute("userGender", userInfo.get("gender"));
+			session.setAttribute("accessToken", access_Token);
 	        
 
 

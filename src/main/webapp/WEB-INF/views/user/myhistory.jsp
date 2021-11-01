@@ -42,7 +42,7 @@
 								<td>${historyVO.image_name }</td>
 								<td>${historyVO.music_emotion }</td>
 								<td>
-								<a href="${historyVO.music_url}">
+								<a href="https://www.youtube.com/embed/${historyVO.music_url}">
 								${historyVO.music_artist} - ${historyVO.music_title }</a></td>
 							</tr>
 						</c:forEach>
