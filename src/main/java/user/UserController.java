@@ -110,7 +110,7 @@ public class UserController {
 		System.out.println(vo.getMember_email());
 		service.deleteInfo(vo.getMember_email());
 		session.invalidate();
-		return "redirect:/h";
+		return "redirect:/index";
 	}
 	
 	/**

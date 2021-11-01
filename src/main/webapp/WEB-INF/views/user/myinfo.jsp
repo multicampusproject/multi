@@ -86,7 +86,7 @@
 						     <tr>
 						      <td  colspan="2">
 						      <input type="submit" class="btn btn-warning" id="joinBtn" value="이름 수정">
-						      <a class="btn btn-outline-warning" href="${pageContext.request.contextPath}/h">메인으로 가기</a></td>
+						      <a class="btn btn-outline-warning" href="${pageContext.request.contextPath}/index">메인으로 가기</a></td>
 						    </tr>
 						  </tbody>
 						</table>

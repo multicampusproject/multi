@@ -42,6 +42,7 @@
 		from multihistory h, music m
 		where h.music_num = m.music_num
 		group by m.music_num
+		order by cnt desc limit 8
 	</select>
 
 </mapper>
