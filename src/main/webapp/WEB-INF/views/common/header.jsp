@@ -66,7 +66,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login2">프로필 음악 추천</a></li>
+                         <li class="nav-item">
+                        <a class="nav-link" href="https://kauth.kakao.com/oauth/authorize?client_id=19b62a13fd7d5958d73872912e2a3c34&redirect_uri=http://localhost:9001/login2&response_type=code"
+                         style="color:white">프로필 음악 추천</a>
+                         </li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/galleryupload">갤러리 음악 추천</a></li>
                         <li class="nav-item"><a class="nav-link" href="notice?num=1">공지사항</a></li>
                         <li class="nav-item"><a class="nav-link" href="qna?num=1">QnA</a></li>

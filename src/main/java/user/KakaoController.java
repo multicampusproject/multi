@@ -32,6 +32,7 @@ import com.google.gson.JsonParser;
 public class KakaoController {
 
 	HashMap<String, Object> userInfo = new HashMap<String, Object>();
+	 String access_Token = "";
 	
 	@Autowired
 	@Qualifier("userservice")
@@ -48,7 +49,12 @@ public class KakaoController {
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("vo", dbvo);
 			session.setAttribute("imageurl", userInfo.get("profile").toString());
-		}
+	        
+
+
+
+		} 
+
 		
 		return "/index";
 	}
@@ -61,8 +67,21 @@ public class KakaoController {
 			UserVO dbvo = service.emailCheck(vo.getMember_email());
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("vo", dbvo);
-			session.setAttribute("imageurl", userInfo.get("profile").toString());
+			//session.setAttribute("imageurl", userInfo.get("profile").toString());
+			session.setAttribute("userId", userInfo.get("email"));
+			session.setAttribute("userName", userInfo.get("nickname"));
+			session.setAttribute("userAge", userInfo.get("age"));
+			session.setAttribute("userProfile", userInfo.get("profile"));
+			session.setAttribute("userGender", userInfo.get("gender"));
+			session.setAttribute("accessToken", access_Token);
+
+			
+			
+			
 		}
+
+		
+		
 		return "index";
 	}
 	
@@ -96,6 +115,14 @@ public class KakaoController {
         System.out.println("###access_Token#### : " + access_Token);
         System.out.println("###userInfo#### : " + userInfo.get("email"));
         System.out.println("###profile_image#### : " + userInfo.get("profile"));
+        System.out.println(userInfo.get("nickname"));
+        System.out.println(userInfo.get("age"));
+        System.out.println(userInfo.get("gender"));
+
+        
+
+        
+
         
         
         //JSONObject kakaoInfo =  new JSONObject(userInfo);
@@ -223,7 +250,8 @@ public class KakaoController {
 
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
-
+            
+            /* 수현님 userinfo
             //JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
@@ -243,6 +271,28 @@ public class KakaoController {
             //userInfo.put("profile_image", profile_image);
             userInfo.put("email", email);
             userInfo.put("profile", image_url);
+            */
+            JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+			
+			JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+
+			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+			String profile = properties.getAsJsonObject().get("profile_image").getAsString();
+			String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
+			String age = kakaoAccount.getAsJsonObject().get("age_range").getAsString();
+			String gender = kakaoAccount.getAsJsonObject().get("gender").getAsString();
+
+			userInfo.put("nickname", nickname);
+			userInfo.put("email", email);
+			userInfo.put("profile", profile);
+			userInfo.put("age", age);
+			userInfo.put("gender", gender);
+			
+            
+            
+            
+            
+            
 
         } catch (IOException e) {
             // TODO Auto-generated catch block
