@@ -81,7 +81,7 @@ if (message!="") {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#services" style="color:white">프로필 음악 추천</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/login2" style="color:white">프로필 음악 추천</a></li>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/galleryupload" style="color:white">갤러리 음악 추천</a></li>
                         <li class="nav-item"><a class="nav-link" href="notice?num=1" style="color:white">공지사항</a></li>
                         <li class="nav-item"><a class="nav-link" href="qna?num=1" style="color:white">QnA</a></li>
@@ -141,7 +141,7 @@ if (message!="") {
                 <div class="masthead-heading text-uppercase">투데이스뮤직</div>
                 <a class="btn btn-primary btn-xl text-uppercase mb-3" >프로필뮤직 추천받기</a>
                 <br>
-                <a class="btn btn-primary btn-xl text-uppercase" >영상 배경음악 추천받기</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="${pageContext.request.contextPath}/galleryupload" >갤러리뮤직 추천받기</a>
                 <br>
                 <div class="mt-5">
                 <c:choose>
