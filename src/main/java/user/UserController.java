@@ -35,7 +35,6 @@ public class UserController {
 			session.setAttribute("vo", dbvo);
 		}
 		
-		
 		return "/index";
 	}
 	

@@ -62,7 +62,7 @@ public class KakaoController {
         HashMap<String, Object> userInfo = getUserInfo(access_Token);
         System.out.println("###access_Token#### : " + access_Token);
         System.out.println("###userInfo#### : " + userInfo.get("email"));
-        //System.out.println("###profile_image#### : " + userInfo.get("profile_image"));
+        System.out.println("###profile_image#### : " + userInfo.get("profile"));
         
         
         //JSONObject kakaoInfo =  new JSONObject(userInfo);
@@ -70,6 +70,7 @@ public class KakaoController {
         model.addAttribute("email", userInfo.get("email"));
         
         String email = userInfo.get("email").toString();
+        String imageurl = userInfo.get("profile").toString();
         System.out.println(email);
         
         
@@ -88,6 +89,9 @@ public class KakaoController {
     		session= request.getSession();
     		session.setAttribute("isLogOn", true);
     		session.setAttribute("vo", dbvo);
+    		//프로필url 세션에 저장
+    		session.setAttribute("imageurl", imageurl);
+    		
     		//model.addAttribute("message", "로그인 되었습니다.");
     		return "/index"; //메인페이지로 이동
     	}
@@ -192,12 +196,19 @@ public class KakaoController {
             //String profile_image = properties.getAsJsonObject().get("profile_image").getAsString();
             String email = kakao_account.getAsJsonObject().get("email").getAsString();
             //String profile = kakao_account.getAsJsonObject().get("profile").getAsString();
-            //String profile = kakao_account.getAsJsonObject().get("profile").getAsString();
+            //JsonArray profile = kakao_account.getAsJsonObject().get("profile").getAsJsonArray();
+            //String profile_image_url = profile.getAsJsonObject().get("profile_image_url").getAsString();
+            
+            
+            JsonObject profile = kakao_account.getAsJsonObject().get("profile").getAsJsonObject();
+            String image_url = profile.getAsJsonObject().get("profile_image_url").getAsString();
+
+            System.out.println("**** 프로필 url *** : "+image_url);
             
             userInfo.put("accessToken", access_Token);
             //userInfo.put("profile_image", profile_image);
             userInfo.put("email", email);
-            //userInfo.put("profile", profile);
+            userInfo.put("profile", image_url);
 
         } catch (IOException e) {
             // TODO Auto-generated catch block
