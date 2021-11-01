@@ -19,13 +19,7 @@ public class MusicListController {
 	//@Qualifier("service")
 	MusicListService service;
 	
-	/*
-	@RequestMapping("/musiclist")
-	@ResponseBody
-	public List<MusicListVO> multimusicList(){
-	List<MusicListVO> list = service.multimusicList();
-	return list;
-	*/
+	
 	
 	/**
 	 * 음악리스트

@@ -75,26 +75,22 @@ public class KakaoController {
         
         UserVO dbvo = service.emailCheck(email);
         
-        
-   
-        	
-        	
-        	//System.out.println("------------------------------------------------");
-        	//System.out.println(email);
-        	//System.out.println(dbvo.getEmail());
-        	if(dbvo == null) {//db에 정보없다 -> 회원가입 페이지로 이동
-        		model.addAttribute("member_email", email);
-        		return "/user/joinform"; //회원가입 페이지
-        		
-        	}else {//db에 정보 있다 -> 로그인하고 메인으로 이동
-        		//로그인 처리하기
-        		HttpSession session = request.getSession();
-        		session= request.getSession();
-        		session.setAttribute("isLogOn", true);
-        		session.setAttribute("vo", dbvo);
-        		model.addAttribute("message", "로그인 되었습니다.");
-        		return "/index"; //메인페이지로 이동
-        	}
+    	//System.out.println("------------------------------------------------");
+    	//System.out.println(email);
+    	//System.out.println(dbvo.getEmail());
+    	if(dbvo == null) {//db에 정보없다 -> 회원가입 페이지로 이동
+    		model.addAttribute("member_email", email);
+    		return "/user/joinform"; //회원가입 페이지
+    		
+    	}else {//db에 정보 있다 -> 로그인하고 메인으로 이동
+    		//로그인 처리하기
+    		HttpSession session = request.getSession();
+    		session= request.getSession();
+    		session.setAttribute("isLogOn", true);
+    		session.setAttribute("vo", dbvo);
+    		//model.addAttribute("message", "로그인 되었습니다.");
+    		return "/index"; //메인페이지로 이동
+    	}
         //return "/user/test"; //본인 원하는 경로 설정
 	}
 	
