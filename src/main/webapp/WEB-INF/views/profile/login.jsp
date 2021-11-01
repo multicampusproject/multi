@@ -9,7 +9,8 @@
 
 <head>
 <title>Home</title>
-<script src="/jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/scripts.js"></script>
 <link href="../resources/static/css/styles.css" rel="stylesheet" />
 
 </head>

@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <title>QnA 수정화면</title>
 <link href="/resources/static/css/styles.css" rel="stylesheet" />
-<script src="jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/scripts.js"></script>
 <script type="text/javascript">
 
 </script>

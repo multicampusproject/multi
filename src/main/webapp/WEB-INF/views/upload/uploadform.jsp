@@ -16,7 +16,8 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)--> 
-		<link href="/resources/static/css/styles.css" rel="stylesheet" type="text/css" />
+		<link href="../resources/static/css/styles.css" rel="stylesheet" type="text/css" />
+		<script src="../resources/static/js/scripts.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>

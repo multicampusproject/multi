@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>QnA 글 보기화면</title>
-<script src="jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/scripts.js"></script>
 <script type="text/javascript">
 var message = '${param.message}'
 

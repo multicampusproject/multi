@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>공지사항 글 보기화면</title>
 <link href="/resources/static/css/styles.css" rel="stylesheet" />
-<script src="jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/scripts.js"></script>
 <script type="text/javascript">
 //로그인 안하고 댓글달면 alert 
 var message = '${param.message}'

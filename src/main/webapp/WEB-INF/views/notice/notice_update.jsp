@@ -11,7 +11,7 @@
 <script src="jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 
-</script>
+</script><script src="../resources/static/js/scripts.js"></script>
 </head>
 <body>
 <div class="container">
