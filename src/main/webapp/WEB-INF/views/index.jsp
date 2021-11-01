@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Today's Music</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -139,7 +139,7 @@ if (message!="") {
             <div class="container">
                 <div class="masthead-subheading">오늘 내 기분? 음악으로 말할게</div>
                 <div class="masthead-heading text-uppercase">투데이스뮤직</div>
-                <a class="btn btn-primary btn-xl text-uppercase mb-3" >프로필뮤직 추천받기</a>
+                <a class="btn btn-primary btn-xl text-uppercase mb-3" href="${pageContext.request.contextPath}/login2" >프로필뮤직 추천받기</a>
                 <br>
                 <a class="btn btn-primary btn-xl text-uppercase" href="${pageContext.request.contextPath}/galleryupload" >갤러리뮤직 추천받기</a>
                 <br>
