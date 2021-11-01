@@ -31,16 +31,49 @@ import com.google.gson.JsonParser;
 @Controller
 public class KakaoController {
 
+	HashMap<String, Object> userInfo = new HashMap<String, Object>();
+	
 	@Autowired
 	@Qualifier("userservice")
 	UserService service;
+	
+	/**
+	 * 메인
+	 * */
+	@RequestMapping("/h")
+	public String hh(HttpSession session) {
+		UserVO vo = (UserVO)session.getAttribute("vo");
+		if(vo != null) {
+			UserVO dbvo = service.emailCheck(vo.getMember_email());
+			session.setAttribute("isLogOn", true);
+			session.setAttribute("vo", dbvo);
+			session.setAttribute("imageurl", userInfo.get("profile").toString());
+		}
+		
+		return "/index";
+	}
+	
+	
+	@RequestMapping("/index")
+	public String index(HttpSession session) {
+		UserVO vo = (UserVO)session.getAttribute("vo");
+		if(vo != null) {
+			UserVO dbvo = service.emailCheck(vo.getMember_email());
+			session.setAttribute("isLogOn", true);
+			session.setAttribute("vo", dbvo);
+			session.setAttribute("imageurl", userInfo.get("profile").toString());
+		}
+		return "index";
+	}
+	
 	
 	@RequestMapping(value = "/login/getKakaoAuthUrl")
 	public @ResponseBody String getKakaoAuthUrl(
 			HttpServletRequest request) throws Exception {
 		String reqUrl = 
 				"https://kauth.kakao.com/oauth/authorize"
-				+ "?client_id=9f408ed91ceb3fd32f37ca846fc220f7"
+				//+ "?client_id=9f408ed91ceb3fd32f37ca846fc220f7"
+				+ "?client_id=19b62a13fd7d5958d73872912e2a3c34"
 				+ "&redirect_uri=http://localhost:9001/loginresult"
 				+ "&response_type=code";
 		
@@ -59,7 +92,7 @@ public class KakaoController {
         System.out.println("###access_Token#### : " + access_Token);
         
         
-        HashMap<String, Object> userInfo = getUserInfo(access_Token);
+        userInfo = getUserInfo(access_Token);
         System.out.println("###access_Token#### : " + access_Token);
         System.out.println("###userInfo#### : " + userInfo.get("email"));
         System.out.println("###profile_image#### : " + userInfo.get("profile"));
@@ -117,7 +150,8 @@ public class KakaoController {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=9f408ed91ceb3fd32f37ca846fc220f7");  //본인이 발급받은 key
+            //sb.append("&client_id=9f408ed91ceb3fd32f37ca846fc220f7");  //본인이 발급받은 key
+            sb.append("&client_id=19b62a13fd7d5958d73872912e2a3c34");  //본인이 발급받은 key
             sb.append("&redirect_uri=http://localhost:9001/loginresult");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());

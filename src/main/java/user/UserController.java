@@ -23,32 +23,7 @@ public class UserController {
 	@Qualifier("userservice")
 	UserService service;
 
-	/**
-	 * 메인
-	 * */
-	@RequestMapping("/h")
-	public String hh(HttpSession session) {
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		if(vo != null) {
-			UserVO dbvo = service.emailCheck(vo.getMember_email());
-			session.setAttribute("isLogOn", true);
-			session.setAttribute("vo", dbvo);
-		}
-		
-		return "/index";
-	}
 	
-	
-	@RequestMapping("/index")
-	public String index(HttpSession session) {
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		if(vo != null) {
-			UserVO dbvo = service.emailCheck(vo.getMember_email());
-			session.setAttribute("isLogOn", true);
-			session.setAttribute("vo", dbvo);
-		}
-		return "index";
-	}
 	/**
 	 * 아이디중복체크
 	 * */
