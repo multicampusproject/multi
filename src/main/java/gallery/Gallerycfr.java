@@ -23,6 +23,7 @@ public class Gallerycfr implements NaverService {
         try {
             String paramName = "image"; // 파라미터명은 image로 지정
             String imgFile = "C:/Users/HOME/Desktop/images/" + file;
+            //String imgFile = "C:/kdigital2/images/" + file;
             File uploadFile = new File(imgFile);
             String apiURL = "https://naveropenapi.apigw.ntruss.com/vision/v1/face"; // 얼굴 감지
             URL url = new URL(apiURL);
