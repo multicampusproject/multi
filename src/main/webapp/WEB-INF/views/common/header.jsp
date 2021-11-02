@@ -106,7 +106,8 @@ if (message!="") {
 								<li class="nav-item">
 								<div class="dropdown">
 								  <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-								    ${vo.member_name} 님
+								<%--     ${vo.member_name} 님 ### --%>
+								    ${sessionScope.vo.member_name} 님
 								    
 								  </a>
 								
@@ -118,7 +119,8 @@ if (message!="") {
 								</div>
 								</li>
 								<!-- 관리자 메뉴 -->
-		                    	<c:if test="${vo.member_state==1}">
+		             <%--        	<c:if test="${vo.member_state==1}"> --%>
+		                    	 <c:if test="${sessionScope.vo.member_state==1}">
 			                    	<li class="nav-item">
 										<div class="dropdown">
 										  <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">

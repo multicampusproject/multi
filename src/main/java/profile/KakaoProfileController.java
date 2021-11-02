@@ -69,17 +69,6 @@ public class KakaoProfileController {
 
 	}
 
-	@RequestMapping(value="/changeprofile", method=RequestMethod.GET) 
-	public String changeprofile() {
-		System.out.println("프로필 변경페이지 실행중");
-				return "/profile/changeprofile";
-			
-		}
-		
-		
-
-	
-	
 	// 이미지 분석 controller
 	@RequestMapping(value = "/cfr", method = RequestMethod.GET)
 	public ModelAndView pf2(String image) throws Exception {

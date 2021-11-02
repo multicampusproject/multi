@@ -59,39 +59,29 @@
 				</div>
 			</div>
 		</div>
-	</section>
-
-	<section>
 	
-
-	
+			
 	<div class="row text-center">
 		<div class="container">
 			<div class="col-md-12">
-			<span class="fa-stack fa-4x">
-			<form action="/pf2" method="post">
+				<span class="fa-stack fa-1x"></span>
+				<form action="/pf2" method="post">
 				<span th:if="${userId==null}"> 
 					<button class="btn btn-danger" type="button">
 						<a href='/cfr?image=${userProfile }'> 프로필 분석 
 					</button>
 				</span>
-			</form>
-			</span>
-		</div>
-				<div class="col-md-10">
-					<span class="fa-stack fa-4x">
-						<span>
-							<button class="btn btn-dark"  type="button" onclick="alert('로그아웃 이후 변경된 프로필이 적용됩니다.\n다시 로그인해주세요.')">
-								<a href="${pageContext.request.contextPath}/userlogout" > 프로필을 바꾸셧나요?</a>
-									
-							</button>
-						</span>
-					</span>
-				</div>
+				</form> 
+					 <button class="btn btn-dark"  type="button" onclick="alert('로그아웃 이후 변경된 프로필이 적용됩니다.\n다시 로그인해주세요.')">
+						<a href="${pageContext.request.contextPath}/userlogout" > 프로필을 바꾸셧나요?</a>	
+					</button>	
+				</span>
+			</div> 
 		</div>
 	</div>
-				
+		
 	</section>
+
 
 
 

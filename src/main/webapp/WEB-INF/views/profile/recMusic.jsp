@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="../common/header.jsp"%>
 <link href="../resources/static/css/styles.css" rel="stylesheet" />
 <script src="../resources/static/js/scripts.js"></script>
-<%@ include file="../common/header.jsp"%>
+
 </head>
 <body>
 
@@ -140,6 +141,7 @@
 
 
 	</c:forEach>
+
 
 
 
