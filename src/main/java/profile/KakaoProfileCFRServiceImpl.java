@@ -160,11 +160,17 @@ public class KakaoProfileCFRServiceImpl implements KakaoProfileCFRService {
 			OutputStream outputStream = con.getOutputStream();
 			PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, "UTF-8"), true);
 			String LINE_FEED = "\r\n";
-
+			URL imageurl;
+			if ((String)userInfo.get("profile") == null){
+				imageurl = new URL("http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg");
+			}else {
+				imageurl = new URL( (String)(userInfo.get("profile")) );
+			}
 			////
 			// 원격서버일 때
-			URL imageurl = new URL( (String)(userInfo.get("profile")) );
+			//URL imageurl = new URL( (String)(userInfo.get("profile")) );
 			//
+
 
 			URLConnection imagecon = imageurl.openConnection();
 			InputStream imagestream = imagecon.getInputStream();
