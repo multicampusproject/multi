@@ -59,18 +59,16 @@ public class KakaoProfileController {
 	
 
 	}
-	/*
-	@RequestMapping()
-	public ModelAndView noprofile(HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		if(session.getAttribute("userProfile").equals("http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg") ) {
-			
+
+	@RequestMapping(value="/changeprofile", method=RequestMethod.GET) 
+	public String changeprofile() {
+		
+				return "/profile/changeprofile";
+				
 		}
 		
 		
-		return mv;
-	}
-	*/
+
 	
 	
 	// 이미지 분석 controller

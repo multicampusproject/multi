@@ -29,7 +29,9 @@
 							<div class="timeline-heading">
 								<br>
 								<h4>
-									${imageAge }<br> ${imageGender }<br> ${imageEmotion }
+									Age: ${imageAge }<br> 
+									Gender: ${imageGender }<br>
+									Emotion: ${imageEmotion }
 								
 							</div>
 							<div class="timeline-body">

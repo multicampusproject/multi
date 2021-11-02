@@ -32,8 +32,10 @@
 					</span> <span>
 						<div>
 							<h4 class="my-3">프로필 분석</h4>
-							<p class="text-muted">등록되어있는 프로필을 CFR(CLOVA Face
-								Recognition)을 통해 성별, 나이, 감정을 분석합니다.</p>
+							<p class="text-muted">
+							등록되어있는 프로필로부터 <br>
+							CFR(CLOVA Face Recognition)을 통해<br>
+							성별, 나이, 감정정보를 분석합니다.</p>
 						</div>
 					</span>
 				</div>
@@ -42,7 +44,9 @@
 							src="../resources/static/assets/img/P_matching.JPG" width=100%
 							height=100%></span>
 					</span> <span><h4 class="my-3">음악추천</h4></span> <span><p
-							class="text-muted">성별, 나이, 감정에 맞는 음악을 추천받고 감상하실 수 있습니다.</p></span>
+							class="text-muted">
+							성별, 나이, 감정에 맞는 음악을 추천받고 
+							<br>감상하실 수 있습니다.</p></span>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <span><img
@@ -50,24 +54,42 @@
 							height=100%></span>
 					</span>
 					<h4 class="my-3">공유하기</h4>
-					<p class="text-muted">추천받은 음악을 카톡으로 공유 할 수 있습니다.</p>
+					<p class="text-muted">
+					추천받은 음악을 카톡으로 공유 할 수 있습니다.</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section>
-		<div class="text-center">
+	
+
+	
+	<div class="row text-center">
+		<div class="container">
+			<div class="col-md-12">
+			<span class="fa-stack fa-4x">
 			<form action="/pf2" method="post">
 				<span th:if="${userId==null}"> 
-
-
 					<button class="btn btn-danger" type="button">
 						<a href='/cfr?image=${userProfile }'> 프로필 분석 
 					</button>
 				</span>
 			</form>
+			</span>
 		</div>
+				<div class="col-md-10">
+					<span class="fa-stack fa-4x">
+						<span>
+							<button class="btn btn-dark"  type="button">
+								<a href='/changeprofile'> 프로필을 바꾸셧나요?</a>
+							</button>
+						</span>
+					</span>
+				</div>
+		</div>
+	</div>
+				
 	</section>
 
 
