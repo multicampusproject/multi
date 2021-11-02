@@ -81,10 +81,19 @@ if (message!="") {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                         <li class="nav-item">
+                      					<c:choose>
+                	<c:when test="${isLogOn==true and not empty vo}">
+                        <li class="nav-item">
                         <a class="nav-link" href="https://kauth.kakao.com/oauth/authorize?client_id=19b62a13fd7d5958d73872912e2a3c34&redirect_uri=http://localhost:9001/login2&response_type=code"
-                        >프로필 음악 추천</a>
+                         >프로필 음악 추천받기</a>
                          </li>
+                	</c:when>
+                	<c:otherwise>
+                	 <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)"  onclick="alert('카카오 로그인이 필요한 서비스입니다.'); kakaoLogin(); ">프로필 음악 추천받기</a>
+                         </li>
+                	</c:otherwise>
+                	</c:choose>
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/galleryupload">갤러리 음악 추천</a></li>
                         <li class="nav-item"><a class="nav-link" href="notice?num=1">공지사항</a></li>
                         <li class="nav-item"><a class="nav-link" href="qna?num=1">QnA</a></li>

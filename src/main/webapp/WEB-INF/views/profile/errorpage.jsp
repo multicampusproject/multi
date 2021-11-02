@@ -14,18 +14,23 @@
 
 </head>
 <body>
+<script type="text/javascript">
+window.onload = function() {
+  alert("분석에 실패했습니다.");	}
+
+  </script>
 
 	<section class="page-section" id="services">
 		<div class="container">
 			<div class="text-center">
-				<h2 class="section-heading text-uppercase" style="color:red" >Error!</h2>
+				<h2 class="section-heading text-uppercase" style="color:red" >Error!!!</h2>
 				<h3 class="section-subheading text-muted">
 				${error }
 				</h3>
 			</div>
 
 			<div class="row text-center">
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<span class="fa-stack fa-4x"> <img
 						src="../resources/static/assets/img/error1.JPG" width=100%
 						height=100%>
@@ -36,7 +41,7 @@
 						</div>
 					</span>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<span class="fa-stack fa-4x"> <span><img
 							src="../resources/static/assets/img/error2.JPG" width=100%
 							height=100%></span>
@@ -44,7 +49,7 @@
 							class="text-muted">감지 할 수 있는 얼굴을 <a href="${pageContext.request.contextPath}/galleryupload" >갤러리 음악추천</a>
 							에서 업로드 해주세요!</p></span>
 				</div>
-				<div class="col-md-4">
+			<!-- 	<div class="col-md-6">
 					<span class="fa-stack fa-4x"> <span><img
 							src="../resources/static/assets/img/P_recomm.JPG" width=100%
 							height=100%></span>
@@ -56,22 +61,10 @@
 		</div>
 	</section>
 
-	<section>
-		<div class="text-center">
-			<form action="/pf2" method="post">
-				<span th:if="${userId==null}"> 
-
-
-					<button class="btn btn-danger" type="button">
-						<a href='/cfr?image=${userProfile }'> 프로필 분석 
-					</button>
-				</span>
-			</form>
-		</div>
-	</section>
-
+	
 
 
 	<%@ include file="../common/footer.jsp"%>
+
 	</body>
 </html>

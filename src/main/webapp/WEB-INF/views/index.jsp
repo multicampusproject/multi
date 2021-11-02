@@ -81,10 +81,23 @@ if (message!="") {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    
+                    <c:choose>
+                	<c:when test="${isLogOn==true and not empty vo}">
                         <li class="nav-item">
                         <a class="nav-link" href="https://kauth.kakao.com/oauth/authorize?client_id=19b62a13fd7d5958d73872912e2a3c34&redirect_uri=http://localhost:9001/login2&response_type=code"
                          style="color:white">프로필 음악 추천</a>
                          </li>
+                	</c:when>
+                	<c:otherwise>
+                	 <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)"  onclick="alert('카카오 로그인이 필요한 서비스입니다.'); kakaoLogin(); "  style="color:white">프로필 음악 추천</a>
+                         </li>
+                	</c:otherwise>
+                	
+                    </c:choose>
+                    
+
                          
                          
                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/galleryupload" style="color:white">갤러리 음악 추천</a></li>
@@ -144,9 +157,19 @@ if (message!="") {
             <div class="container">
                 <div class="masthead-subheading">오늘 내 기분? 음악으로 말할게</div>
                 <div class="masthead-heading text-uppercase">투데이스뮤직</div>
-                <a class="btn btn-primary btn-xl text-uppercase mb-3" 
-                href="https://kauth.kakao.com/oauth/authorize?client_id=19b62a13fd7d5958d73872912e2a3c34&redirect_uri=http://localhost:9001/login2&response_type=code">
-                프로필뮤직 추천받기</a>
+					<c:choose>
+                	<c:when test="${isLogOn==true and not empty vo}">
+                        <li class="nav-item">
+                        <a class="nav-link" href="https://kauth.kakao.com/oauth/authorize?client_id=19b62a13fd7d5958d73872912e2a3c34&redirect_uri=http://localhost:9001/login2&response_type=code"
+                         style="color:white">프로필 음악 추천받기</a>
+                         </li>
+                	</c:when>
+                	<c:otherwise>
+                	 <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)"  onclick="alert('카카오 로그인이 필요한 서비스입니다.'); kakaoLogin(); "  style="color:white">프로필 음악 추천받기</a>
+                         </li>
+                	</c:otherwise>
+                	</c:choose>
                 <br>
                 <a class="btn btn-primary btn-xl text-uppercase" href="${pageContext.request.contextPath}/galleryupload" >갤러리뮤직 추천받기</a>
                 <br>
