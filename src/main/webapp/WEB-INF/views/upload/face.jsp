@@ -160,7 +160,7 @@ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; pic
 <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
   // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
-  Kakao.init('4aa33c3926a7c73ab873c98b950a64b5');
+  Kakao.init('fca5649bf1a998d2225b7669329e082e');
 
   // SDK 초기화 여부를 판단합니다.
   console.log(Kakao.isInitialized());
@@ -170,7 +170,7 @@ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; pic
       objectType: 'feed',
       content: {
         title: '이런 음악 어떄요?',
-        description:'추천 음악 제목 : <%=mtitle%>\n아티스트 :<%=martist%>',
+        description:'Title : <%=mtitle%>\nArtist :<%=martist%>',
         imageUrl: 'https://i1.ytimg.com/vi/<%=murl%>/hqdefault.jpg',
         link: {
           mobileWebUrl: 'https://www.youtube.com/watch?v=<%=murl %>',
