@@ -258,6 +258,7 @@ public class KakaoController {
             userInfo.put("email", email);
             userInfo.put("profile", image_url);
             */
+            
             JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			System.out.println("element: "+element);
 			JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
@@ -272,20 +273,20 @@ public class KakaoController {
 				userInfo.put("profile", profile);
 			}
 			*/
-			System.out.println("22222222");
+
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String profile = profile2.getAsJsonObject().get("profile_image_url").getAsString();
 			String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
 			String age = kakaoAccount.getAsJsonObject().get("age_range").getAsString();
 			String gender = kakaoAccount.getAsJsonObject().get("gender").getAsString();
-			System.out.println("3333333333333");
+
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
 			userInfo.put("profile", profile);
 			userInfo.put("age", age);
 			userInfo.put("gender", gender);
 	
-            System.out.println("444444444444444");
+
             
             
             

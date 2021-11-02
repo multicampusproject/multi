@@ -39,7 +39,7 @@ public class KakaoProfileController {
 		HashMap<String, Object> userInfo = KPCS.getUserInfo(accessToken);
 
 		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-		if (userInfo.get("email") != null) {
+	/*	if (userInfo.get("email") != null) {
 			session.setAttribute("userId", userInfo.get("email"));
 			session.setAttribute("userName", userInfo.get("nickname"));
 			session.setAttribute("userAge", userInfo.get("age"));
@@ -48,6 +48,15 @@ public class KakaoProfileController {
 			session.setAttribute("accessToken", accessToken);
 
 		}
+		*/
+			mv.addObject("userId", userInfo.get("email"));
+			mv.addObject("userName", userInfo.get("nickname"));
+			mv.addObject("userAge", userInfo.get("age"));
+			mv.addObject("userProfile", userInfo.get("profile"));
+			mv.addObject("userGender", userInfo.get("gender"));
+
+			
+		
 				System.out.println(userInfo.get("profile") );
 				System.out.println(userInfo.get("gender"));
 				System.out.println(userInfo.get("nickname"));
@@ -62,9 +71,9 @@ public class KakaoProfileController {
 
 	@RequestMapping(value="/changeprofile", method=RequestMethod.GET) 
 	public String changeprofile() {
-		
+		System.out.println("프로필 변경페이지 실행중");
 				return "/profile/changeprofile";
-				
+			
 		}
 		
 		
