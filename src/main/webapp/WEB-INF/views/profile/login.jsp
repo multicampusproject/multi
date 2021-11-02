@@ -59,9 +59,7 @@
 		<div class="text-center">
 			<form action="/pf2" method="post">
 				<span th:if="${userId==null}"> 
-				<!-- <a href="https://kauth.kakao.com/oauth/authorize?client_id=19b62a13fd7d5958d73872912e2a3c34&redirect_uri=http://localhost:9001/login2&response_type=code">
-				<img src="../resources/static/assets/img/kakao_login_medium_narrow.png"> 
-				</a>-->
+
 
 					<button class="btn btn-danger" type="button">
 						<a href='/cfr?image=${userProfile }'> 프로필 분석 

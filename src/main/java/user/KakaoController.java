@@ -49,7 +49,13 @@ public class KakaoController {
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("vo", dbvo);
 			session.setAttribute("imageurl", userInfo.get("profile").toString());
-	        
+			session.setAttribute("userId", userInfo.get("email"));
+			session.setAttribute("userName", userInfo.get("nickname"));
+			session.setAttribute("userAge", userInfo.get("age"));
+			session.setAttribute("userProfile", userInfo.get("profile"));
+			session.setAttribute("userGender", userInfo.get("gender"));
+			session.setAttribute("accessToken", access_Token);
+
 
 
 
@@ -74,7 +80,7 @@ public class KakaoController {
 			session.setAttribute("userProfile", userInfo.get("profile"));
 			session.setAttribute("userGender", userInfo.get("gender"));
 			session.setAttribute("accessToken", access_Token);
-
+			System.out.println("인덱스실행중");
 			
 			
 			
@@ -118,20 +124,16 @@ public class KakaoController {
         System.out.println(userInfo.get("nickname"));
         System.out.println(userInfo.get("age"));
         System.out.println(userInfo.get("gender"));
+        System.out.println("연동조회 완료");
 
-        
 
-        
-
-        
-        
         //JSONObject kakaoInfo =  new JSONObject(userInfo);
         //model.addAttribute("kakaoInfo", kakaoInfo);
         model.addAttribute("email", userInfo.get("email"));
         
         String email = userInfo.get("email").toString();
         String imageurl = userInfo.get("profile").toString();
-        System.out.println(email);
+        System.out.println(email + "   연동조회 email");
         
         
         UserVO dbvo = service.emailCheck(email);
@@ -150,7 +152,16 @@ public class KakaoController {
     		session.setAttribute("isLogOn", true);
     		session.setAttribute("vo", dbvo);
     		//프로필url 세션에 저장
-    		session.setAttribute("imageurl", imageurl);
+    		//session.setAttribute("imageurl", imageurl);
+			session.setAttribute("userId", userInfo.get("email"));
+			session.setAttribute("userName", userInfo.get("nickname"));
+			session.setAttribute("userAge", userInfo.get("age"));
+			session.setAttribute("userProfile", userInfo.get("profile"));
+			session.setAttribute("userGender", userInfo.get("gender"));
+			session.setAttribute("accessToken", access_Token);
+    		System.out.println("세션 저장완료");
+    		
+    		
     		
     		//model.addAttribute("message", "로그인 되었습니다.");
     		return "/index"; //메인페이지로 이동
@@ -273,22 +284,33 @@ public class KakaoController {
             userInfo.put("profile", image_url);
             */
             JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-			
+			System.out.println("element: "+element);
 			JsonObject kakaoAccount = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+			JsonObject profile2 = kakaoAccount.getAsJsonObject().get("profile").getAsJsonObject();
 
+			/*
+			if(properties.getAsJsonObject().get("profile_image").getAsString().equals("") ) {
+				String profile = properties.getAsJsonObject().get("http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg").getAsString();
+				userInfo.put("profile", profile);
+			} else {
+				String profile = properties.getAsJsonObject().get("profile_image").getAsString();
+				userInfo.put("profile", profile);
+			}
+			*/
+			System.out.println("22222222");
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-			String profile = properties.getAsJsonObject().get("profile_image").getAsString();
+			String profile = profile2.getAsJsonObject().get("profile_image_url").getAsString();
 			String email = kakaoAccount.getAsJsonObject().get("email").getAsString();
 			String age = kakaoAccount.getAsJsonObject().get("age_range").getAsString();
 			String gender = kakaoAccount.getAsJsonObject().get("gender").getAsString();
-
+			System.out.println("3333333333333");
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
 			userInfo.put("profile", profile);
 			userInfo.put("age", age);
 			userInfo.put("gender", gender);
-			
-            
+	
+            System.out.println("444444444444444");
             
             
             

@@ -68,7 +68,7 @@
 						</div>
 						<div class="timeline-image">
 							<img class="rounded-circle img-fluid"
-								src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+								src="/resources/static/assets/img/kakao1.jpg"
 								alt="..." />
 						</div>
 						<div class="timeline-panel">
