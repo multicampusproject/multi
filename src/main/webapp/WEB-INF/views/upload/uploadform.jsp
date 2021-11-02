@@ -33,7 +33,7 @@
 }
 #submit:hover{
 	color:white;
-	background-color:skyblue;
+	background-color:#FFDC46;
 }
 .filebox input[type="file"] {
   position: absolute;
@@ -59,7 +59,7 @@
 }
 .filebox label:hover{
 	color:white;
-	background-color:skyblue;
+	background-color:#FFDC46;
 }
 
 /* named upload */
