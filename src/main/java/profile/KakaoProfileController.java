@@ -39,7 +39,7 @@ public class KakaoProfileController {
 		HashMap<String, Object> userInfo = KPCS.getUserInfo(accessToken);
 
 		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-	//	if (userInfo.get("email") != null) {
+		if (userInfo.get("email") != null) {
 			session.setAttribute("userId", userInfo.get("email"));
 			session.setAttribute("userName", userInfo.get("nickname"));
 			session.setAttribute("userAge", userInfo.get("age"));
@@ -47,7 +47,7 @@ public class KakaoProfileController {
 			session.setAttribute("userGender", userInfo.get("gender"));
 			session.setAttribute("accessToken", accessToken);
 
-	//	}
+		}
 				System.out.println(userInfo.get("profile") );
 				System.out.println(userInfo.get("gender"));
 				System.out.println(userInfo.get("nickname"));
@@ -78,7 +78,7 @@ public class KakaoProfileController {
 		ModelAndView mv = new ModelAndView();
 		String jsonModel = KPCS.test(image); // 얼굴감지 결과 json으로 가져옴
 		
-		if(image != "") { //image를 넘겨받는경우
+		if(jsonModel.contains("\"faceCount\":0") == true) { //image를 넘겨받는경우
 		mv.addObject("pfresult", jsonModel); // 모델에 저장
 		mv.setViewName("/profile/cfrImage");
 		System.out.println(image + "넘겨받는 이미지");

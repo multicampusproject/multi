@@ -32,7 +32,7 @@ window.onload = function() {
 			<div class="row text-center">
 				<div class="col-md-6">
 					<span class="fa-stack fa-4x"> <img
-						src="../resources/static/assets/img/error1.JPG" width=100%
+						src="/assets/img/error1.JPG" width=100%
 						height=100%>
 					</span> <span>
 						<div>
@@ -43,25 +43,16 @@ window.onload = function() {
 				</div>
 				<div class="col-md-6">
 					<span class="fa-stack fa-4x"> <span><img
-							src="../resources/static/assets/img/error2.JPG" width=100%
+							src="/assets/img/error2.JPG" width=100%
 							height=100%></span>
 					</span> <span><h4 class="my-3"><a href="${pageContext.request.contextPath}/galleryupload" >"갤러리 음악 추천" 서비스를 이용해주세요</h4></a></span> <span><p
 							class="text-muted">감지 할 수 있는 얼굴을 <a href="${pageContext.request.contextPath}/galleryupload" >갤러리 음악추천</a>
 							에서 업로드 해주세요!</p></span>
 				</div>
-			<!-- 	<div class="col-md-6">
-					<span class="fa-stack fa-4x"> <span><img
-							src="../resources/static/assets/img/P_recomm.JPG" width=100%
-							height=100%></span>
-					</span>
-					<h4 class="my-3">다시 등록하기</h4>
-					<p class="text-muted">프로필을 바꾸셨다면 서비스 정보의 재등록이 필요합니다. <a href="https://accounts.kakao.com/weblogin/account">카카오계정</a> 에 접속하여 "연결 끊기"를 통해 등록된 정보를 삭제하시고 다시 저희 서비스를 등록해주세요!</p>
-				</div>
 			</div>
 		</div>
 	</section>
 
-	
 
 
 	<%@ include file="../common/footer.jsp"%>

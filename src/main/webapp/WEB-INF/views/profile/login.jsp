@@ -27,7 +27,7 @@
 			<div class="row text-center">
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <img
-						src="../resources/static/assets/img/P_analyze.JPG" width=100%
+						src="/assets/img/P_analyze.JPG" width=100%
 						height=100%>
 					</span> <span>
 						<div>
@@ -41,7 +41,7 @@
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <span><img
-							src="../resources/static/assets/img/P_matching.JPG" width=100%
+							src="/assets/img/P_matching.JPG" width=100%
 							height=100%></span>
 					</span> <span><h4 class="my-3">음악추천</h4></span> <span><p
 							class="text-muted">
@@ -50,7 +50,7 @@
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <span><img
-							src="../resources/static/assets/img/P_recomm.JPG" width=100%
+							src="/assets/img/P_recomm.JPG" width=100%
 							height=100%></span>
 					</span>
 					<h4 class="my-3">공유하기</h4>

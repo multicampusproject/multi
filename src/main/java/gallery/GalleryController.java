@@ -76,13 +76,22 @@ public class GalleryController {
 	public ModelAndView face(String image){
 		System.out.println("시작");
 		ModelAndView mv = new ModelAndView();
-		ArrayList<MusicVO> list = musicservice.getMusicList();
-		mv.addObject("musiclist",list);
 		String jsonModel = gallerycfr.test(image);
-		mv.addObject("image", filename);
-		mv.addObject("faceresult", jsonModel);
-		mv.setViewName("/upload/face");
-		return mv;
+		System.out.println(jsonModel.contains("\"faceCount\":0"));
+		if(jsonModel.contains("\"faceCount\":0") != true) { //image를 넘겨받는경우
+			ArrayList<MusicVO> list = musicservice.getMusicList();
+			mv.addObject("musiclist",list);
+			mv.addObject("image", filename);
+			mv.addObject("faceresult", jsonModel);
+			mv.setViewName("/upload/face");
+			System.out.println(image + "넘겨받는 이미지");
+			System.out.println("이미지분석 컨트롤러 종료1");
+			return mv;
+			} else { //image를 넘겨받지 못하는 경우
+				mv.addObject("error", "잘못된 프로필 사진입니다.");
+				mv.setViewName("/upload/errorpage");
+				return mv;
+			}
 		
 	}
 
