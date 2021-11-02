@@ -81,8 +81,9 @@
 				<div class="col-md-10">
 					<span class="fa-stack fa-4x">
 						<span>
-							<button class="btn btn-dark"  type="button">
-								<a href='/changeprofile'> 프로필을 바꾸셧나요?</a>
+							<button class="btn btn-dark"  type="button" onclick="alert('로그아웃 이후 변경된 프로필이 적용됩니다.\n다시 로그인해주세요.')">
+								<a href="${pageContext.request.contextPath}/userlogout" > 프로필을 바꾸셧나요?</a>
+									
 							</button>
 						</span>
 					</span>
