@@ -36,7 +36,7 @@ window.onload = function() {
 						height=100%>
 					</span> <span>
 						<div>
-							<h4 class="my-3">프로필 사진에 "얼굴"이 나올수 있도록 해주세요!</h4>
+							<h4 class="my-3">업로드한 사진에 "얼굴"이 나올수 있도록 해주세요!</h4>
 							<p class="text-muted">CFR이 프로필로부터 얼굴을 감지하지 못했습니다. </p>
 						</div>
 					</span>
