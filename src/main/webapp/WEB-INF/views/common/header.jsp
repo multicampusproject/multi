@@ -19,7 +19,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/resources/static/css/styles.css" rel="stylesheet" /> 
+        <link href="/css/styles.css" rel="stylesheet" /> 
 		
 
         
@@ -74,7 +74,7 @@ if (message!="") {
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" onclick="location.href='/index'"><img src="/resources/static/assets/img/logo.png" alt="..." /></a>
+                <a class="navbar-brand" onclick="location.href='/index'"><img src="/assets/img/logo.png" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
