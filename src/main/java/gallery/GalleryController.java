@@ -78,7 +78,7 @@ public class GalleryController {
 		ModelAndView mv = new ModelAndView();
 		String jsonModel = gallerycfr.test(image);
 		System.out.println(jsonModel.contains("\"faceCount\":0"));
-		if(jsonModel.contains("\"faceCount\":0") != true) { //image를 넘겨받는경우
+		if(jsonModel.contains("\"faceCount\":0") != true ) { //image를 넘겨받는경우
 			ArrayList<MusicVO> list = musicservice.getMusicList();
 			mv.addObject("musiclist",list);
 			mv.addObject("image", filename);

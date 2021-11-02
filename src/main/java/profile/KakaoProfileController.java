@@ -78,7 +78,7 @@ public class KakaoProfileController {
 		ModelAndView mv = new ModelAndView();
 		String jsonModel = KPCS.test(image); // 얼굴감지 결과 json으로 가져옴
 		
-		if(jsonModel.contains("\"faceCount\":0") == true) { //image를 넘겨받는경우
+		if(jsonModel.contains("\"faceCount\":0") == true ) { //image를 넘겨받는경우
 		mv.addObject("pfresult", jsonModel); // 모델에 저장
 		mv.setViewName("/profile/cfrImage");
 		System.out.println(image + "넘겨받는 이미지");

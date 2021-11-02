@@ -28,7 +28,7 @@ window.onload = function() {
 				${error }
 				</h3>
 			</div>
-
+ 
 			<div class="row text-center">
 				<div class="col-md-6">
 					<span class="fa-stack fa-4x"> <img
