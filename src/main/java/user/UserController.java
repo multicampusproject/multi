@@ -110,7 +110,7 @@ public class UserController {
 		System.out.println(vo.getMember_email());
 		service.deleteInfo(vo.getMember_email());
 		session.invalidate();
-		return "redirect:/h";
+		return "redirect:/index";
 	}
 	
 	/**
@@ -133,6 +133,8 @@ public class UserController {
 			System.out.println(h.getMusic_title());
 			System.out.println(h.getMusic_url());
 			System.out.println(h.getMusic_emotion());
+			System.out.println(h.getImage_gender());
+			System.out.println(h.getImage_age());
 		}
 		
 		ModelAndView mv = new ModelAndView();

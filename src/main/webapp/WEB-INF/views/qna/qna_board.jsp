@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>QnA 게시판 메인</title>
 </head>
-<script src="jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/jquery-3.2.1.min.js"></script>
+<script src="../resources/static/js/scripts.js"></script>
 <script type="text/javascript">
 //로그인 안하고 댓글달면 alert 
 var message = '${param.message}'

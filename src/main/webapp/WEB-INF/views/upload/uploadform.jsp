@@ -16,7 +16,8 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)--> 
-		<link href="/resources/static/css/styles.css" rel="stylesheet" type="text/css" />
+		<link href="../resources/static/css/styles.css" rel="stylesheet" type="text/css" />
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -32,7 +33,7 @@
 }
 #submit:hover{
 	color:white;
-	background-color:skyblue;
+	background-color:#FFDC46;
 }
 .filebox input[type="file"] {
   position: absolute;
@@ -58,7 +59,7 @@
 }
 .filebox label:hover{
 	color:white;
-	background-color:skyblue;
+	background-color:#FFDC46;
 }
 
 /* named upload */
@@ -153,6 +154,7 @@ $(document).ready(function(){
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="../resources/static/js/scripts.js"></script>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

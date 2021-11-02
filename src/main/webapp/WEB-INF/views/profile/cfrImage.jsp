@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>이미지db 저장</title>
+<script src="../resources/static/js/scripts.js"></script>
 </head>
 <body>
 

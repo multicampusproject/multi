@@ -30,7 +30,8 @@
 					<thead>
 						<tr scope="col">
 							<th>No.</th>
-							<th>이미지 이름</th>
+							<th>나이</th>
+							<th>성별</th>
 							<th>감정</th>
 							<th>추천음악</th>
 						</tr>
@@ -39,10 +40,11 @@
 						<c:forEach items="${list}" var="historyVO" varStatus="status">
 							<tr >
 								<td>${status.count }</td>
-								<td>${historyVO.image_name }</td>
+								<td>${historyVO.image_age }</td>
+								<td>${historyVO.image_gender }</td>
 								<td>${historyVO.music_emotion }</td>
 								<td>
-								<a href="${historyVO.music_url}">
+								<a href="https://www.youtube.com/embed/${historyVO.music_url}">
 								${historyVO.music_artist} - ${historyVO.music_title }</a></td>
 							</tr>
 						</c:forEach>

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="../resources/static/js/scripts.js"></script>
 <title>relogin 화면</title>
 </head>
 <body>
