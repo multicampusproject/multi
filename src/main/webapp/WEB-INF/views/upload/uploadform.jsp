@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)--> 
 		<link href="../resources/static/css/styles.css" rel="stylesheet" type="text/css" />
-		<script src="../resources/static/js/scripts.js"></script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -154,6 +154,7 @@ $(document).ready(function(){
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script src="../resources/static/js/scripts.js"></script>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>
