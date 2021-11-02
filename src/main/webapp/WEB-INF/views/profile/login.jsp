@@ -58,14 +58,7 @@
 					추천받은 음악을 카톡으로 공유 할 수 있습니다.</p>
 				</div>
 			</div>
-		</div>
-	</section>
-
-	<section>
-	
-
-	
-	<div class="row text-center">
+				<div class="text-center">
 		<div class="container">
 			<div class="col-md-12">
 			<span class="fa-stack fa-4x">
@@ -78,6 +71,12 @@
 			</form>
 			</span>
 		</div>
+		</div>
+	</section>
+
+	<section>
+	
+
 				<div class="col-md-10">
 					<span class="fa-stack fa-4x">
 						<span>
