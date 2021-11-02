@@ -5,7 +5,23 @@ public class HistoryJoinVO {
 	int recommend_code;
 	String member_email, image_name, music_emotion, music_artist, music_title, music_url;
 	int cnt, music_num;
-	
+	String image_age,image_gender;
+
+	public String getImage_age() {
+		return image_age;
+	}
+
+	public void setImage_age(String image_age) {
+		this.image_age = image_age;
+	}
+
+	public String getImage_gender() {
+		return image_gender;
+	}
+
+	public void setImage_gender(String image_gender) {
+		this.image_gender = image_gender;
+	}
 
 	public String getMember_email() {
 		return member_email;
