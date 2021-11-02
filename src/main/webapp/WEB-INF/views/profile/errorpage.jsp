@@ -8,9 +8,8 @@
 <html>
 
 <head>
-<title>Home</title>
-<script src="../resources/static/js/jquery-3.2.1.min.js"></script>
-<script src="../resources/static/js/scripts.js"></script>
+<title>error 페이지</title>
+<script src="/jquery-3.2.1.min.js"></script>
 <link href="../resources/static/css/styles.css" rel="stylesheet" />
 
 </head>
@@ -19,38 +18,39 @@
 	<section class="page-section" id="services">
 		<div class="container">
 			<div class="text-center">
-				<h2 class="section-heading text-uppercase">Services</h2>
-				<h3 class="section-subheading text-muted">현재 카카오톡 프로필로 등록된 사진을
-					분석합니다.</h3>
+				<h2 class="section-heading text-uppercase" style="color:red" >Error!</h2>
+				<h3 class="section-subheading text-muted">
+				${error }
+				</h3>
 			</div>
 
 			<div class="row text-center">
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <img
-						src="../resources/static/assets/img/P_analyze.JPG" width=100%
+						src="../resources/static/assets/img/error1.JPG" width=100%
 						height=100%>
 					</span> <span>
 						<div>
-							<h4 class="my-3">프로필 분석</h4>
-							<p class="text-muted">등록되어있는 프로필을 CFR(CLOVA Face
-								Recognition)을 통해 성별, 나이, 감정을 분석합니다.</p>
+							<h4 class="my-3">프로필 사진에 "얼굴"이 나올수 있도록 해주세요!</h4>
+							<p class="text-muted">CFR이 프로필로부터 얼굴을 감지하지 못했습니다. </p>
 						</div>
 					</span>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <span><img
-							src="../resources/static/assets/img/P_matching.JPG" width=100%
+							src="../resources/static/assets/img/error2.JPG" width=100%
 							height=100%></span>
-					</span> <span><h4 class="my-3">음악추천</h4></span> <span><p
-							class="text-muted">성별, 나이, 감정에 맞는 음악을 추천받고 감상하실 수 있습니다.</p></span>
+					</span> <span><h4 class="my-3"><a href="${pageContext.request.contextPath}/galleryupload" >"갤러리 음악 추천" 서비스를 이용해주세요</h4></a></span> <span><p
+							class="text-muted">감지 할 수 있는 얼굴을 <a href="${pageContext.request.contextPath}/galleryupload" >갤러리 음악추천</a>
+							에서 업로드 해주세요!</p></span>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <span><img
 							src="../resources/static/assets/img/P_recomm.JPG" width=100%
 							height=100%></span>
 					</span>
-					<h4 class="my-3">공유하기</h4>
-					<p class="text-muted">추천받은 음악을 카톡으로 공유 할 수 있습니다.</p>
+					<h4 class="my-3">다시 등록하기</h4>
+					<p class="text-muted">프로필을 바꾸셨다면 서비스 정보의 재등록이 필요합니다. <a href="https://accounts.kakao.com/weblogin/account">카카오계정</a> 에 접속하여 "연결 끊기"를 통해 등록된 정보를 삭제하시고 다시 저희 서비스를 등록해주세요!</p>
 				</div>
 			</div>
 		</div>
@@ -73,5 +73,5 @@
 
 
 	<%@ include file="../common/footer.jsp"%>
-</body>
+	</body>
 </html>

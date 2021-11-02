@@ -134,7 +134,7 @@ public class KakaoProfileCFRServiceImpl implements KakaoProfileCFRService {
 	@Override
 	public String test(String file) {
 
-
+		System.out.println("cfr실행");
 		
 		StringBuffer reqStr = new StringBuffer();
 		StringBuffer response = new StringBuffer(); // 응답정보 받아오는것
@@ -142,6 +142,7 @@ public class KakaoProfileCFRServiceImpl implements KakaoProfileCFRService {
 		String clientSecret = "cSpYlzWe8M0HF2rYC4e2MpCM2z36IXb3TwUk8IW3"; // Application Client Secret";
 
 		try {
+			System.out.println("네이버 접속");
 			String paramName = "image"; // 파라미터명은 image로 지정
 
 			String apiURL = "https://naveropenapi.apigw.ntruss.com/vision/v1/face";
@@ -172,7 +173,7 @@ public class KakaoProfileCFRServiceImpl implements KakaoProfileCFRService {
 
 			String fileName = imageurl.toString();
 
-
+			System.out.println("cfr 이미지 분석중");
 			writer.append("--" + boundary).append(LINE_FEED);
 			writer.append("Content-Disposition: form-data; name=\"" + paramName + "\"; filename=\"" + fileName + "\"")
 					.append(LINE_FEED);
@@ -212,9 +213,10 @@ public class KakaoProfileCFRServiceImpl implements KakaoProfileCFRService {
 			}
 		} catch (Exception e) {
 			System.out.println(e);
+			System.out.println("에러발생");
 			return e.toString(); // 에러발생시 string 으로 출력
 		}
-
+		System.out.println("cfr종료");
 		return response.toString(); // if 블록의 지역변수이므로 전역변수로 선언한다
 	}
 
