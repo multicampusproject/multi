@@ -115,7 +115,7 @@ for(int i = 0; i< musiclist.size() ;i++){
             <div class="container">
                 <ul class="timeline">
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../resources/static/assets/img/about/1.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="/assets/img/about/1.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                             <br>
@@ -132,7 +132,7 @@ for(int i = 0; i< musiclist.size() ;i++){
                         </div>
                     </li>
                     <li class="timeline-pannel">
-                          <div class="timeline-image"><img class="rounded-circle img-fluid" src="../resources/static/assets/img/kakao1.jpg" alt="..." /></div> 
+                          <div class="timeline-image"><img class="rounded-circle img-fluid" src="/assets/img/kakao1.jpg" alt="..." /></div> 
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                             	<br>
