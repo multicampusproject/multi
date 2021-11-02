@@ -29,26 +29,21 @@ window.onload = function() {
 				</h3>
 			</div>
 
-			<div class="row text-center">
+			<div class="text-center">
 				<div class="col-md-6">
 					<span class="fa-stack fa-4x">
 					 <% String image = request.getParameter("image"); %>
-                <img src="/galleryimages/<%=image %>"  width=100% height=100%>
-					</span> <span>
-						<div>
+					 <img src="/galleryimages/<%=image %>"  width=100% height=100%>
+					</span> 
+						
+				</div>
+					<div class="row justify-content-center">
+               
 							<h4 class="my-3">업로드한 사진에 "얼굴"이 나올수 있도록 해주세요!</h4>
-							<p class="text-muted">CFR이 업로드한 사진에서 얼굴을 감지하지 못했습니다. </p>
+							<p class="text-muted">CFR이 업로드한 사진에서 얼굴을 감지하지 못했습니다. <br>
+							<a href="${pageContext.request.contextPath}/galleryupload">갤러리 음악 추천 받기</a>로 다시 업로드 해주세요.</p>
 						</div>
-					</span>
-				</div>
-				<div class="col-md-6">
-					<span class="fa-stack fa-4x"> <span><img
-							src="/assets/img/error2.JPG" width=100%
-							height=100%></span>
-					</span> <span><h4 class="my-3"><a href="${pageContext.request.contextPath}/galleryupload" >"갤러리 음악 추천" 서비스를 이용해주세요</h4></a></span> <span><p
-							class="text-muted">감지 할 수 있는 얼굴을 <a href="${pageContext.request.contextPath}/galleryupload" >갤러리 음악추천</a>
-							에서 업로드 해주세요!</p></span>
-				</div>
+				
 			</div>
 		</div>
 	</section>
