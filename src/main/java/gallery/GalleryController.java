@@ -88,7 +88,8 @@ public class GalleryController {
 			System.out.println("이미지분석 컨트롤러 종료1");
 			return mv;
 			} else { //image를 넘겨받지 못하는 경우
-				mv.addObject("error", "잘못된 프로필 사진입니다.");
+				mv.addObject("error", "사람 얼굴이 드러나지 않은 사진입니다.");
+				mv.addObject("image",filename);
 				mv.setViewName("/upload/errorpage");
 				return mv;
 			}
