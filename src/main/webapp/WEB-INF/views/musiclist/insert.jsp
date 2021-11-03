@@ -18,7 +18,7 @@
 	<section class="page-section" id="services">
             <div class="container mt-5">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">회원 목록</h2>
+                    <h2 class="section-heading text-uppercase">음원 추가</h2>
                 </div>
                 <div class="row pt-3">
                 <div class="container pt-5 pb-5">
@@ -30,7 +30,7 @@
 			      </div>
 			      
 				  <div class="form-group">
-			        <label for="music_emotion">감정</label>
+			        <label for="music_emotion">감정 : </label>
 			        <input type="radio" name="music_emotion" value="angry" checked>Angry
 					<input type="radio" name="music_emotion" value="fear">Fear
 					<input type="radio" name="music_emotion" value="laugh">Laugh

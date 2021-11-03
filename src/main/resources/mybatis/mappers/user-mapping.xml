@@ -40,7 +40,7 @@
 		select h.recommend_code, h.member_email, i.image_name, i.image_gender, i.image_age, m.music_emotion, m.music_artist, m.music_title, m.music_url
 		from multihistory h, multiimage i, music m
 		where h.image_name = i.image_name and h.music_num= m.music_num and h.member_email = #{member_email}
-		order by h.recommend_code
+		order by h.recommend_code desc
 	</select>
 
 </mapper>

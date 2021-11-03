@@ -15,4 +15,6 @@ public interface UserDAO {
 	public void deleteInfo(String member_email);
 	public int idCheck(String member_id);
 	public List<HistoryJoinVO> historyByEmail(String member_email);
+	
+	
 }
