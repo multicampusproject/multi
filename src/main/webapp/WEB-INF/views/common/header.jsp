@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+        <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Today's Music</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="../resources/static/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -18,11 +20,28 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" /> 
+<<<<<<< HEAD
   
+=======
+		
+
+        
+>>>>>>> branch 'master' of https://github.com/multicampusproject/multi.git
     </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   <script>
+  //message alert
+  var message = '${param.message}'
+
+if (message!="") {
+	alert(message);
+}
+ var message = '${message}'
+
+	 if (message!="") {
+	  alert(message);
+	 }
   //카카오로그인
   function kakaoLogin() {
 
@@ -66,8 +85,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#services">프로필 음악 추천</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">영상 음악 추천</a></li>
+                      					<c:choose>
+                	<c:when test="${isLogOn==true and not empty vo}">
+                        <li class="nav-item">
+                        <a class="nav-link" href="https://kauth.kakao.com/oauth/authorize?client_id=19b62a13fd7d5958d73872912e2a3c34&redirect_uri=http://localhost:9001/login2&response_type=code"
+                         >프로필 음악 추천받기</a>
+                         </li>
+                	</c:when>
+                	<c:otherwise>
+                	 <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)"  onclick="alert('카카오 로그인이 필요한 서비스입니다.'); kakaoLogin(); ">프로필 음악 추천받기</a>
+                         </li>
+                	</c:otherwise>
+                	</c:choose>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/galleryupload">갤러리 음악 추천</a></li>
                         <li class="nav-item"><a class="nav-link" href="notice?num=1">공지사항</a></li>
                         <li class="nav-item"><a class="nav-link" href="qna?num=1">QnA</a></li>
 
@@ -79,7 +110,8 @@
 								<li class="nav-item">
 								<div class="dropdown">
 								  <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-								    ${vo.member_name} 님
+								<%--     ${vo.member_name} 님 ### --%>
+								    ${sessionScope.vo.member_name} 님
 								    
 								  </a>
 								
@@ -91,7 +123,8 @@
 								</div>
 								</li>
 								<!-- 관리자 메뉴 -->
-		                    	<c:if test="${vo.member_state==1}">
+		             <%--        	<c:if test="${vo.member_state==1}"> --%>
+		                    	 <c:if test="${sessionScope.vo.member_state==1}">
 			                    	<li class="nav-item">
 										<div class="dropdown">
 										  <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">

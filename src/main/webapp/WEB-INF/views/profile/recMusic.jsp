@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../resources/static/css/styles.css" rel="stylesheet" />
 <%@ include file="../common/header.jsp"%>
+<link href="../resources/static/css/styles.css" rel="stylesheet" />
+<script src="../resources/static/js/scripts.js"></script>
+
 </head>
 <body>
 
@@ -22,13 +24,15 @@
 					<li>
 						<div class="timeline-image">
 							<img class="rounded-circle img-fluid"
-								src="../resources/static/assets/img/about/1.jpg" alt="..." />
+								src="/assets/img/about/1.jpg" alt="..." />
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
 								<br>
 								<h4>
-									${imageAge }<br> ${imageGender }<br> ${imageEmotion }
+									Age: ${imageAge }<br> 
+									Gender: ${imageGender }<br>
+									Emotion: ${imageEmotion }
 								
 							</div>
 							<div class="timeline-body">
@@ -51,7 +55,7 @@
 					<li class="timeline-inverted">
 						<div class="timeline-image">
 							<img class="rounded-circle img-fluid"
-								src="../resources/static/assets/img/about/4.jpg" alt="..." />
+								src="/assets/img/about/4.jpg" alt="..." />
 						</div>
 						<div class="timeline-panel">
 							<div class="timeline-heading">
@@ -68,7 +72,7 @@
 						</div>
 						<div class="timeline-image">
 							<img class="rounded-circle img-fluid"
-								src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+								src="/assets/img/kakao1.jpg"
 								alt="..." />
 						</div>
 						<div class="timeline-panel">
@@ -119,14 +123,14 @@
 							description : ' title: ${musicVO.music_title }\n artist: ${musicVO.music_artist }',
 							imageUrl : 'https://i1.ytimg.com/vi/${musicVO.music_url }/hqdefault.jpg',
 							link : {
-								mobileWebUrl : 'https://www.youtube.com/embed/${musicVO.music_url }',
+								mobileWebUrl : 'https://m.youtube.com/watch?v=${musicVO.music_url }',
 								webUrl : 'https://www.youtube.com/watch?v=${musicVO.music_url }'
 							}
 						},
 						buttons : [ {
 							title : '유튜브로 들어봐요!',
 							link : {
-								mobileWebUrl : 'https://www.youtube.com/embed/${musicVO.music_url }',
+								mobileWebUrl : 'https://m.youtube.com/watch?v=${musicVO.music_url }',
 								webUrl : 'https://www.youtube.com/watch?v=${musicVO.music_url }'
 							}
 						} ]
@@ -137,6 +141,7 @@
 
 
 	</c:forEach>
+
 
 
 

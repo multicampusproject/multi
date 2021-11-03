@@ -10,6 +10,7 @@
 
 <title>공지사항 게시판 메인</title>
 <link href="/css/styles.css" rel="stylesheet" />
+<script src="../resources/static/js/scripts.js"></script>
 </head>
 
 <script>

@@ -39,7 +39,7 @@ public class KakaoProfileController {
 		HashMap<String, Object> userInfo = KPCS.getUserInfo(accessToken);
 
 		// 클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
-		if (userInfo.get("email") != null) {
+	/*	if (userInfo.get("email") != null) {
 			session.setAttribute("userId", userInfo.get("email"));
 			session.setAttribute("userName", userInfo.get("nickname"));
 			session.setAttribute("userAge", userInfo.get("age"));
@@ -48,9 +48,25 @@ public class KakaoProfileController {
 			session.setAttribute("accessToken", accessToken);
 
 		}
+		*/
+			mv.addObject("userId", userInfo.get("email"));
+			mv.addObject("userName", userInfo.get("nickname"));
+			mv.addObject("userAge", userInfo.get("age"));
+			mv.addObject("userProfile", userInfo.get("profile"));
+			mv.addObject("userGender", userInfo.get("gender"));
 
-		mv.setViewName("/profile/login");
-		return mv;
+			
+		
+				System.out.println(userInfo.get("profile") );
+				System.out.println(userInfo.get("gender"));
+				System.out.println(userInfo.get("nickname"));
+				System.out.println("프로필페이지 실행중");
+				mv.setViewName("/profile/login");
+				return mv;
+			
+	
+	
+
 	}
 
 	// 이미지 분석 controller
@@ -59,10 +75,18 @@ public class KakaoProfileController {
 
 		ModelAndView mv = new ModelAndView();
 		String jsonModel = KPCS.test(image); // 얼굴감지 결과 json으로 가져옴
+		System.out.println(jsonModel);
+		if(jsonModel.contains("\"faceCount\":0") != true ) { //image를 넘겨받는경우
 		mv.addObject("pfresult", jsonModel); // 모델에 저장
 		mv.setViewName("/profile/cfrImage");
+		System.out.println(image + "넘겨받는 이미지");
 		System.out.println("이미지분석 컨트롤러 종료1");
 		return mv;
+		} else { //image를 넘겨받지 못하는 경우
+			mv.addObject("error", "잘못된 프로필 사진입니다.");
+			mv.setViewName("/profile/errorpage");
+			return mv;
+		}
 	}
 
 	// 이미지 분석 결과 저장 controller2

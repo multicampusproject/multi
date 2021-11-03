@@ -12,6 +12,7 @@
 	var ctx = document.getElementById('myChart');
 
 </script>
+<script src="../resources/static/js/scripts.js"></script>
 </head>
 <body id="page-top">
         <%@ include file="../common/header.jsp" %>

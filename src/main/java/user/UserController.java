@@ -23,33 +23,7 @@ public class UserController {
 	@Qualifier("userservice")
 	UserService service;
 
-	/**
-	 * 메인
-	 * */
-	@RequestMapping("/h")
-	public String hh(HttpSession session) {
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		if(vo != null) {
-			UserVO dbvo = service.emailCheck(vo.getMember_email());
-			session.setAttribute("isLogOn", true);
-			session.setAttribute("vo", dbvo);
-		}
-		
-		
-		return "/index";
-	}
 	
-	
-	@RequestMapping("/index")
-	public String index(HttpSession session) {
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		if(vo != null) {
-			UserVO dbvo = service.emailCheck(vo.getMember_email());
-			session.setAttribute("isLogOn", true);
-			session.setAttribute("vo", dbvo);
-		}
-		return "index";
-	}
 	/**
 	 * 아이디중복체크
 	 * */
@@ -136,7 +110,7 @@ public class UserController {
 		System.out.println(vo.getMember_email());
 		service.deleteInfo(vo.getMember_email());
 		session.invalidate();
-		return "redirect:/h";
+		return "redirect:/index";
 	}
 	
 	/**
@@ -159,6 +133,8 @@ public class UserController {
 			System.out.println(h.getMusic_title());
 			System.out.println(h.getMusic_url());
 			System.out.println(h.getMusic_emotion());
+			System.out.println(h.getImage_gender());
+			System.out.println(h.getImage_age());
 		}
 		
 		ModelAndView mv = new ModelAndView();

@@ -11,7 +11,7 @@
 	//alert(1)
 	//alert("${aa}")
 </script>
-
+<script src="../resources/static/js/scripts.js"></script>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>

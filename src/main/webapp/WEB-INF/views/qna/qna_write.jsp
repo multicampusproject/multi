@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>QnA 글쓰기 화면</title>
+<script src="../resources/static/js/scripts.js"></script>
 </head>
 <body>
 <div class="container">

@@ -10,7 +10,7 @@
 <title>공지사항 수정화면</title>
 <link href="/css/styles.css" rel="stylesheet" />
 <script src="jquery-3.2.1.min.js"></script>
-
+<script src="../resources/static/js/scripts.js"></script>
 </head>
 <body>
 <div class="container">

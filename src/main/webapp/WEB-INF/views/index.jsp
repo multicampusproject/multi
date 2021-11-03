@@ -10,9 +10,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Today's Music</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="../resources/static/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -20,12 +20,10 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" /> 
-		
-
-        
+		<script src="../resources/static/js/scripts.js"></script>        
     </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   <script>
   //message alert
   var message = '${param.message}'
@@ -74,15 +72,33 @@ if (message!="") {
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" onclick="location.href='/index'"><img src="/resources/static/assets/img/navbar-logo.svg" alt="..." /></a>
+                <a class="navbar-brand" onclick="location.href='/index'"><img src="/assets/img/logo.png" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#services" style="color:white">프로필 음악 추천</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio" style="color:white">영상 음악 추천</a></li>
+                    
+                    <c:choose>
+                	<c:when test="${isLogOn==true and not empty vo}">
+                        <li class="nav-item">
+                        <a class="nav-link" href="https://kauth.kakao.com/oauth/authorize?client_id=19b62a13fd7d5958d73872912e2a3c34&redirect_uri=http://localhost:9001/login2&response_type=code"
+                         style="color:white">프로필 음악 추천</a>
+                         </li>
+                	</c:when>
+                	<c:otherwise>
+                	 <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)"  onclick="alert('카카오 로그인이 필요한 서비스입니다.'); kakaoLogin(); "  style="color:white">프로필 음악 추천</a>
+                         </li>
+                	</c:otherwise>
+                	
+                    </c:choose>
+                    
+
+                         
+                         
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/galleryupload" style="color:white">갤러리 음악 추천</a></li>
                         <li class="nav-item"><a class="nav-link" href="notice?num=1" style="color:white">공지사항</a></li>
                         <li class="nav-item"><a class="nav-link" href="qna?num=1" style="color:white">QnA</a></li>
 
@@ -139,9 +155,22 @@ if (message!="") {
             <div class="container">
                 <div class="masthead-subheading">오늘 내 기분? 음악으로 말할게</div>
                 <div class="masthead-heading text-uppercase">투데이스뮤직</div>
-                <a class="btn btn-primary btn-xl text-uppercase mb-3" >프로필뮤직 추천받기</a>
+					<c:choose>
+                	<c:when test="${isLogOn==true and not empty vo}">
+                    
+                        <a class="btn btn-primary btn-xl text-uppercase" href="https://kauth.kakao.com/oauth/authorize?client_id=19b62a13fd7d5958d73872912e2a3c34&redirect_uri=http://localhost:9001/login2&response_type=code"
+                         style="color:white">프로필 음악 추천받기</a>
+                         <br>
+                	</c:when>
+                	<c:otherwise>
+               
+                        <a class="btn btn-primary btn-xl text-uppercase" href="javascript:void(0)"  onclick="alert('카카오 로그인이 필요한 서비스입니다.'); kakaoLogin(); "  style="color:white">프로필 음악 추천받기</a>
+                         <br>
+                	</c:otherwise>
+                	</c:choose>
                 <br>
-                <a class="btn btn-primary btn-xl text-uppercase" >영상 배경음악 추천받기</a>
+                
+                <a class="btn btn-primary btn-xl text-uppercase" href="${pageContext.request.contextPath}/galleryupload" >갤러리뮤직 추천받기</a>
                 <br>
                 <div class="mt-5">
                 <c:choose>

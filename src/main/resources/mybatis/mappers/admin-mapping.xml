@@ -31,7 +31,7 @@
 	<!-- 감정통계  -->
 	<select id="countByEmotion" resultType="historyjoinVO">
 		select m.music_emotion, count(music_emotion) as cnt
-		from multihistory h, multimusic m
+		from multihistory h, music m
 		where h.music_num = m.music_num
 		group by m.music_emotion
 	</select>
@@ -39,9 +39,10 @@
 	<!-- 음악통계 -->
 	<select id="countByMusic" resultType="historyjoinVO">
 		select h.music_num, count(h.music_num) as cnt, m.music_artist, m.music_title
-		from multihistory h, multimusic m
+		from multihistory h, music m
 		where h.music_num = m.music_num
 		group by m.music_num
+		order by cnt desc limit 8
 	</select>
 
 </mapper>

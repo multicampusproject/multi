@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../resources/static/css/styles.css" rel="stylesheet" />
+<link href="../resources/static/css/styles.css" rel="stylesheet" /><script src="../resources/static/js/scripts.js"></script>
 </head>
 <body>
 
