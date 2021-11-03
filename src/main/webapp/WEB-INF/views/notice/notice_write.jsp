@@ -20,7 +20,7 @@
 			<br><br>
 			<input type="text" class="form-control mb-3" placeholder="글 제목" name="notice_title" maxlength="50">
 			<textarea class="form-control" placeholder="글 내용" name="notice_content" maxlength="2048" style="height:350px;"></textarea>
-			<input type="submit" class="btn btn-primary mt-3" value="등록">
+			<input type="submit" class="btn btn-primary mt-3" value="등록" id="submitBtn">
 		</div>
 	</form>
 </div>

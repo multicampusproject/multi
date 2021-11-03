@@ -13,14 +13,6 @@
 <script src="../resources/static/js/scripts.js"></script>
 </head>
 
-<script>
-var message = '${param.message}'
-
-	if (message!="") {
-		alert(message);
-	}
-
-</script>
 <body>
 <div class="container">
 	<%@ include file="../common/header.jsp" %>
