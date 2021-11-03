@@ -70,6 +70,9 @@ for(int i = 0; i < faces.length(); i++){
 	String emotionString = (String)emotion.get("value");
 	JSONObject pose = (JSONObject)oneface.get("pose");
 	String poseString = (String)pose.get("value");
+	if (emotionString.equals("disgust")) {
+		emotionString = "angry";
+	}
 	emotionvalue = emotionString;
 	agevalue = ageString;
 	gendervalue = genderString;
