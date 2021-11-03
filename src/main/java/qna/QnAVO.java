@@ -6,6 +6,7 @@ public class QnAVO {
 	String qna_content;
 	String qna_regdate;
 	String member_email;
+	
 	public int getQna_code() {
 		return qna_code;
 	}

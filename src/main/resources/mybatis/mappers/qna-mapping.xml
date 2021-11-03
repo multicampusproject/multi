@@ -7,8 +7,21 @@
 		select * from multiqna;
 	</select>
 	
-	<select id="cnt" resultType="int">
+	<select id="cnt" resultType="int" parameterType="HashMap">
 		select count(qna_code) from multiqna
+		<if test="type!=null">
+			<choose>
+				<when test="type.equals('title')">
+				where qna_subject like concat('%', #{keyword} , '%')
+				</when>
+				<when test="type.equals('content')">
+				where qna_content like concat('%', #{keyword} , '%')
+				</when>
+				<when test="type.equals('writer')">
+				where member_email = #{keyword}
+				</when>						
+			</choose>
+		</if> 
 	</select>
 	
 	<select id="qnaOne" resultType="QnAVO" parameterType="int">
@@ -30,8 +43,23 @@
 		delete from multiqna where qna_code = #{qna_code}
 	</delete>
 
-	<!-- 페이징 처리 후 게시글 조회 -->
+	<!-- 검색 후 페이징 처리 -->
 	<select id="listPage" resultType="QnAVO" parameterType="HashMap">
-		select * from multiqna order by qna_code desc limit #{displayPost}, #{postNum}
+		select * from multiqna
+		<if test="type!=null">
+			<choose>
+				<when test="type.equals('title')">
+				where qna_subject like concat('%', #{keyword} , '%')
+				</when>
+				<when test="type.equals('content')">
+				where qna_content like concat('%', #{keyword} , '%')
+				</when>
+				<when test="type.equals('writer')">
+				where member_email = #{keyword}
+				</when>						
+			</choose>
+		</if> 
+		order by qna_code desc limit #{displayPost}, #{postNum}	
+	
 	</select>	
 </mapper>

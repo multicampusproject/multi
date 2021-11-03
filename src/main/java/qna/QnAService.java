@@ -1,14 +1,11 @@
 package qna;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
 import notice.NoticeVO;
 
 public interface QnAService {
 	public QnAVO[] qnaList();
-	
-	public QnAVO[] historyQnAOne(String email);
 	
 	public QnAVO qnaOne(int code);
 	
@@ -18,7 +15,7 @@ public interface QnAService {
 	
 	public void deleteQnA(int code);
 	
-	public int cnt();
+	public int cnt(HashMap<String, Object> map);
 	
-	public List<QnAVO> listPage(int displayPost, int postNum);
+	public List<NoticeVO> listPage(HashMap<String, Object> map);
 }

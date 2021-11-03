@@ -1,18 +1,17 @@
 package qna;
 
+import java.util.HashMap;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import notice.NoticeVO;
 import reply.ReplyServiceImpl;
 import reply.ReplyVO;
 import user.UserVO;
@@ -30,12 +29,21 @@ public class QnAController {
 	ReplyServiceImpl replyservice;
 	
 	@RequestMapping("/qna") 
-	public ModelAndView qna(HttpServletRequest request, int num) {
+	public ModelAndView qna(HttpServletRequest request, @RequestParam("num")Integer num) {
 		ModelAndView mv = new ModelAndView();
+		if (num==null) {
+			num=1;
+		}
 		//qnalist 가져오기
-		QnAVO[] qnalist = qnaservice.qnaList();
-		mv.addObject("qnalist", qnalist);
-		int cnt = qnaservice.cnt();
+		//QnAVO[] qnalist = qnaservice.qnaList();
+		String type = request.getParameter("type");
+		String keyword = request.getParameter("keyword");
+		
+		HashMap<String, Object> hm = new HashMap<String, Object>();
+		hm.put("type", type);
+		hm.put("keyword", keyword);
+		int cnt = qnaservice.cnt(hm);
+		
 		//한 페이지에 출력할 게시물 갯수
 		int postNum = 10;
 		//하단 페이징 번호 ([게시물 총 갯수 / 한 페이지에 출력할 갯수]의 올림)
@@ -43,10 +51,20 @@ public class QnAController {
 		//출력할 게시물
 		int displayPost = (num-1)*postNum;
 		//num은 페이지 번호
-		List list = null;
-		list = qnaservice.listPage(displayPost,postNum);
+		mv.addObject("num", num);
+		
+		List<NoticeVO> list = null;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("type", type);
+		map.put("keyword", keyword);
+		map.put("displayPost", displayPost);
+		map.put("postNum",  postNum);		
+		list = qnaservice.listPage(map);
 		mv.addObject("list", list);
 		mv.addObject("pageNum", pageNum);
+		mv.addObject("type", type);
+		mv.addObject("keyword", keyword);
 		
 		// 한번에 표시할 페이징 번호의 갯수
 		int pageNum_cnt = 10;
@@ -75,18 +93,24 @@ public class QnAController {
 		mv.addObject("prev", prev);
 		mv.addObject("next", next);
 		
+		
 		//세션정보 가져오기
 		HttpSession session = request.getSession();
 		UserVO vo = (UserVO)session.getAttribute("vo");
 		//모델에 세션정보 넣어주기
 		mv.addObject("vo", vo);
-		mv.setViewName("qna/qna_board");
 		//문의게시판 page로 이동
+		mv.setViewName("qna/qna_board");
 		return mv;
 	}
 	
 	@RequestMapping("/qnaview")
-	public ModelAndView qnaView(int code, Integer number, String flag, HttpServletRequest request) { //?code=1 get 방식으로
+	public ModelAndView qnaView(int code, Integer number, String flag, HttpServletRequest request, Integer num) { //?code=1 get 방식으로
+		//num이 null 인 경우 1로 설정
+		if (num==null) {
+			num=1;
+		}
+		
 		//공지사항 데이터 전달
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -99,6 +123,7 @@ public class QnAController {
 		if (flag!= null) {
 			mv.addObject("flag", flag);			
 		}
+		mv.addObject("num", num);
 		mv.addObject("qvo", qvo);
 		mv.addObject("vo", vo);
 		mv.addObject("replyList", replyList);
@@ -108,10 +133,12 @@ public class QnAController {
 	
 	
 	@RequestMapping("/qnawrite")
-	public ModelAndView qnaWrite(HttpSession session) {
-		//공지사항 작성 페이지로 이동
+	public ModelAndView qnaWrite(HttpSession session, Integer num) {
+		//num이 null 인 경우 1로 설정
+		if (num==null) {
+			num=1;
+		}
 		ModelAndView mv = new ModelAndView();
-		QnAVO qvo = new QnAVO();
 		//session 에서 회원 vo 가져오기
 		UserVO vo = (UserVO)session.getAttribute("vo");
 		if (vo==null) {
@@ -119,25 +146,34 @@ public class QnAController {
 			mv.setViewName("redirect:index");
 			mv.addObject("message", "로그인 후 작성 가능합니다.");
 		} else {
+			//qna 작성 페이지로 이동
 			mv.setViewName("qna/qna_write");
+			mv.addObject("num", num);
 		}
 		return mv;
 
 	}
 	
-	@RequestMapping(value="/qnawriteaction", method=RequestMethod.POST)
-	public ModelAndView qnaWriteAction(HttpServletRequest request, HttpSession session) {
+	@RequestMapping("/qnawriteaction")
+	public ModelAndView qnaWriteAction(HttpServletRequest request, HttpSession session, Integer num) {
 		//공지사항 작성 페이지로 이동
 		ModelAndView mv = new ModelAndView();
 		QnAVO qvo = new QnAVO();
 		//session 에서 회원 vo 가져오기
 		UserVO vo = (UserVO)session.getAttribute("vo");
-		//email 없이 테스트용 if문
+		
+		//num이 null 인 경우 1로 설정
+		if (num==null) {
+			num=1;
+		}
+		
+		//session test
 		if (vo==null) {
 			//session 이 없으면 로그인창으로 보내주기
-			mv.setViewName("redirect:testmain");
+			mv.setViewName("redirect:index");
 			mv.addObject("message", "로그인 후 작성 가능합니다.");
-		} else {			
+		} else {	
+			
 			String qna_content = request.getParameter("qna_content");
 			String qna_title = request.getParameter("qna_title");
 			String email = vo.getMember_email();
@@ -146,6 +182,7 @@ public class QnAController {
 			qvo.setQna_subject(qna_title);
 			qnaservice.insertQnA(qvo);
 			mv.addObject("vo", qvo);
+			mv.addObject("num",num);
 			mv.setViewName("redirect:qna");
 			mv.addObject("message", "게시글이 등록되었습니다.");
 		}
@@ -154,20 +191,19 @@ public class QnAController {
 
 	
 	@RequestMapping("/qnaupdate")
-	public ModelAndView qnaUpdate(int code) {
+	public ModelAndView qnaUpdate(int code, Integer num) {
 		//qna 수정 페이지로 이동
 		ModelAndView mv = new ModelAndView();
 		QnAVO qvo = qnaservice.qnaOne(code);
 		mv.addObject("qvo", qvo);
+		mv.addObject("num",num);
 		mv.setViewName("qna/qna_update");
 		return mv;
 	}
 	
-
-	
 	
 	@RequestMapping("/qnaupdateaction")
-	public ModelAndView qnaUpdateAction(HttpServletRequest request) {
+	public ModelAndView qnaUpdateAction(HttpServletRequest request, Integer num) {
 		//글수정 action
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -182,6 +218,7 @@ public class QnAController {
 			mv.setViewName("redirect:index");
 		} else {
 			String email = vo.getMember_email();
+			//세션과 작성자 이메일이 일치하면 수정
 			if(email.equals(qvo.member_email)) {
 				System.out.println(subject);
 				qvo.setQna_content(content);
@@ -190,8 +227,10 @@ public class QnAController {
 				qnaservice.updateQnA(qvo);
 				mv.setViewName("redirect:qnaview?code="+(int)code);
 				mv.addObject("message", "게시글이 수정되었습니다.");
+				mv.addObject("num",num);
 			} else {
 				mv.addObject("message", "작성자가 일치하지 않습니다.");
+				mv.addObject("num",num);
 			}
 		}
 
@@ -199,7 +238,7 @@ public class QnAController {
 	}
 	
 	@RequestMapping("/qnadelete")
-	public ModelAndView qnaDelete(int code, HttpServletRequest request) {
+	public ModelAndView qnaDelete(int code, HttpServletRequest request, Integer num) {
 		//글삭제 action
 		ModelAndView mv = new ModelAndView();	
 		QnAVO qvo = qnaservice.qnaOne(code);
@@ -207,128 +246,74 @@ public class QnAController {
 		HttpSession session = request.getSession();
 		UserVO vo = (UserVO)session.getAttribute("vo");
 		if (vo.getMember_email().equals(qna_email)) {
+			//작성자가 일치하면
 			qnaservice.deleteQnA(code);
 			mv.setViewName("redirect:qna");
 			mv.addObject("message", "게시글이 삭제되었습니다.");
+			mv.addObject("num",num);
 		} else {
-			mv.setViewName("redirect:index");
-			mv.addObject("message", "로그인 정보가 없습니다.");
-		}
-		
-		return mv;
-		
-	}
-	
-	@RequestMapping(value="/qnaInsertReply", method=RequestMethod.POST)
-	public ModelAndView qnaInsertReply(Integer code, HttpServletRequest request) {
-		//댓글달기 action
-		ModelAndView mv = new ModelAndView();
-		ReplyVO rvo = new ReplyVO();
-		HttpSession session = request.getSession();
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		if (vo==null) { //세션 정보 없음
 			//로그인 페이지로 보내기
-			mv.addObject("message", "로그인 후 댓글을 입력할 수 있습니다.");
-			mv.setViewName("redirect:index");
-		} else { //세션 있는 경우
-			String email = vo.getMember_email();
-			String comment = (String) request.getParameter("comment");
-			rvo.setReply_content(comment);
-			rvo.setMember_email(email);
-			rvo.setQna_code((int)code);
-			replyservice.insertQnAReply(rvo);
-			mv.setViewName("redirect:qnaview?code="+(int)code);		
-			mv.addObject("message", "댓글이 입력되었습니다.");
-		}
-		return mv;
-	}
-	
-	@RequestMapping("/qnaUpdateReply")
-	public ModelAndView qnaUpdateReply(int code, Integer number, HttpServletRequest request) {
-		//댓글달기 action
-		ModelAndView mv = new ModelAndView();
-		HttpSession session = request.getSession();
-		ReplyVO rvo = new ReplyVO();
-		rvo.setQna_code(code);
-		rvo.setReply_number((int)number);
-		ReplyVO rvo2 = replyservice.getQnAReply(rvo);
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		String email = vo.getMember_email();
-		if (email.equals(rvo2.getMember_email())) {
-			mv.setViewName("redirect:qnaview?code="+(int)code + "&number="+ (int)number +"&flag=u");			
-		} else {
-			mv.setViewName("redirect:index");
-			mv.addObject("message", "작성자가 일치하지 않습니다.");
-		}
-		return mv;
-	}
-	
-	
-	@RequestMapping("/qnaUpdateReplyAction")
-	public ModelAndView qnaUpdateReplyAction(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView();
-		//댓글달기 action
-		ReplyVO rvo = new ReplyVO();
-		//파라미터 가져오기
-		String flag = request.getParameter("flag");
-		int qnaCode = Integer.parseInt(request.getParameter("qnaCode"));
-		int replyNumber = Integer.parseInt(request.getParameter("replyNumber"));
-		String comment = request.getParameter("comment");
-		//세션가져오기
-		HttpSession session = request.getSession();
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		//rvo에 공지사항 글번호와 댓글번호를 넣어준다
-		rvo.setReply_number(replyNumber);
-		rvo.setQna_code(qnaCode);
-		//기존 rvo 에 저장된 정보 가져오기
-		ReplyVO rvo2 = replyservice.getQnAReply(rvo);
-		if (vo == null) {//세션이 없으면
-			//로그인 페이지로 이동
 			mv.setViewName("redirect:index");
 			mv.addObject("message", "로그인 정보가 없습니다.");
-		} else {
-			String email = vo.getMember_email();
-			if (email.equals(rvo2.getMember_email())) {
-				rvo.setMember_email(email);	
-				rvo.setReply_content(comment);
-				replyservice.updateQnAReply(rvo);
-				mv.setViewName("redirect:qnaview?code="+ qnaCode);
-				mv.addObject("message", "댓글이 수정되었습니다.");
-			} else {
-				System.out.println("작성자가 일치하지 않습니다.");
-				mv.setViewName("redirect:qnaview?code="+ qnaCode);
-				
-			}
 		}
+		
 		return mv;
+		
 	}
 	
-	@RequestMapping("/qnaDeleteReply")
-	public ModelAndView qnaDeleteReply(int number, Integer code, HttpServletRequest request) {
-		//댓글달기 action
-		ModelAndView mv = new ModelAndView();
-		ReplyVO rvo = new ReplyVO();
-		rvo.setQna_code((int)code);
-		rvo.setReply_number(number);
-		ReplyVO rvo2 = replyservice.getQnAReply(rvo);
-		//세션정보 가져오기
-		HttpSession session = request.getSession();
-		UserVO vo = (UserVO)session.getAttribute("vo");
-		if (vo == null) {
-			mv.setViewName("redirect:index");
-		} else {
-			String email = vo.getMember_email();
-			if (email.equals(rvo2.getMember_email())) {
-				replyservice.deleteQnAReply(rvo);
-				mv.setViewName("redirect:qnaview?code="+(int)code);
-				mv.addObject("message", "댓글이 삭제되었습니다.");
-			} else {
-				System.out.println("작성자가 일치하지 않습니다.");
-				mv.setViewName("redirect:qnaview?code="+(int)code);	
-				mv.setViewName("redirect:noticeview?code="+(int)code);	
-			}
-		}	
-		return mv;
-	}
+	//댓글 ajax
+		 @RequestMapping(value="/qna/replyInsert")
+		 @ResponseBody
+		 public int replyInsert(@RequestParam("code")int code, @RequestParam("replyContent")String replyContent, HttpServletRequest request) throws Exception{
+			 ReplyVO rvo = new ReplyVO();
+			 rvo.setReply_content(replyContent);
+			// rvo.setReply_number(100);
+			 HttpSession session = request.getSession();
+			 UserVO uvo = (UserVO)session.getAttribute("vo");
+			 if (uvo != null) {
+				 rvo.setQna_code(code);
+				 String email = uvo.getMember_email();			 
+				 rvo.setMember_email(email);
+				 replyservice.insertQnAReply(rvo);
+				 return code;
+			 }
+			 return -1;
+			 
+			 //ReplyVO vo = replyservice.getNoticeReply(rvo);
+			 //System.out.println(vo.getMember_email());
+		    }
+		    
+	 	@RequestMapping(value="/qna/replyList")
+	    @ResponseBody
+	    public ReplyVO[] getCommentList(@RequestParam("code")int code) throws Exception{
+
+		 	return replyservice.qnaReplyList(code);
+	       
+	    }
+	 	
+	 	@RequestMapping(value="/qna/replyUpdate")
+	    @ResponseBody
+	    public void replyUpdate(@RequestParam("code")int code, @RequestParam("email")String email, @RequestParam("reply_number")int reply_number, @RequestParam("replyContent")String replyContent) throws Exception{
+	 		ReplyVO vo = new ReplyVO();
+	 		vo.setMember_email(email);
+	 		vo.setReply_number(reply_number);
+	 		vo.setQna_code(code);
+	 		vo.setReply_content(replyContent);
+		 	replyservice.updateQnAReply(vo);
+		 	//System.out.println("수정완료");
+	       
+	    }
+		
+	 	@RequestMapping(value="/qna/replyDelete")
+	    @ResponseBody
+	    public void replyDelete(@RequestParam("code")int code, @RequestParam("reply_number")int reply_number) throws Exception{
+	 		ReplyVO vo = new ReplyVO();
+	 		vo.setReply_number(reply_number);
+	 		vo.setQna_code(code);
+		 	replyservice.deleteQnAReply(vo);
+		 	//System.out.println("삭제완료");
+	       
+	    }
+		
 	
 }

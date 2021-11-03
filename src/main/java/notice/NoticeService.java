@@ -1,12 +1,10 @@
 package notice;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public interface NoticeService {
 	public NoticeVO[] noticeList();
-	
-	public NoticeVO[] historyNoticeOne(String email);
 	
 	public NoticeVO noticeOne(int code);
 	
@@ -16,8 +14,9 @@ public interface NoticeService {
 	
 	public void deleteNotice(int code);
 	
-	public int cnt();
+	public int cnt(HashMap<String, Object> map);
 	
 	public List<NoticeVO> listPage(int displayPost, int postNum);
-
+	
+	public List<NoticeVO> listPage(HashMap<String, Object> map);
 }

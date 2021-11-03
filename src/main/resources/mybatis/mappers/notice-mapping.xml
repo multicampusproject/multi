@@ -6,16 +6,24 @@
 <mapper namespace="notice.NoticeDAO">
 	
 	<select id="noticeList" resultType="NoticeVO">
-		select * from multinotice
+		select * from multinotice 
 	</select>
 	
-	<select id="cnt" resultType="int">
+	<select id="cnt" resultType="int" parameterType="HashMap">
 		select count(notice_code) from multinotice
-	</select>
-
-	
-	<select id="noticeHistory" resultType="NoticeVO" parameterType="String">
-		select * from multinotice where member_email = #{member_email}
+		<if test="type!=null">
+			<choose>
+				<when test="type.equals('title')">
+				where notice_subject like concat('%', #{keyword} , '%')
+				</when>
+				<when test="type.equals('content')">
+				where notice_content like concat('%', #{keyword} , '%')
+				</when>
+				<when test="type.equals('writer')">
+				where member_email = #{keyword}
+				</when>						
+			</choose>
+		</if> 
 	</select>
 	
 	<select id="noticeOne" resultType="NoticeVO" parameterType="int">
@@ -36,10 +44,23 @@
 		delete from multinotice where notice_code = #{notice_code}
 	</delete>
 
-	<!-- 페이징 처리 후 게시글 조회 -->
+	<!-- 검색 후 페이징 처리 -->
 	<select id="listPage" resultType="NoticeVO" parameterType="HashMap">
-		select * from multinotice order by notice_code desc limit #{displayPost}, #{postNum}
-
+		select * from multinotice
+		<if test="type!=null">
+			<choose>
+				<when test="type.equals('title')">
+				where notice_subject like concat('%', #{keyword} , '%')
+				</when>
+				<when test="type.equals('content')">
+				where notice_content like concat('%', #{keyword} , '%')
+				</when>
+				<when test="type.equals('writer')">
+				where member_email = #{keyword}
+				</when>						
+			</choose>
+		</if> 
+		order by notice_code desc limit #{displayPost}, #{postNum}
 	</select>
-	
+
 </mapper>

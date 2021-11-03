@@ -1,7 +1,5 @@
 package reply;
 
-import java.util.ArrayList;
-
 public interface ReplyService {
 	
 	public ReplyVO getNoticeReply(ReplyVO vo);

@@ -1,7 +1,5 @@
 package reply;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Qualifier("replyservice")
 public class ReplyServiceImpl implements ReplyService {
 	
-	@Autowired //만들어진 dao 를 자동으로 나에게 주입해줘 - setter 뺌
+	@Autowired 
 	ReplyDAO dao;
 	
 	

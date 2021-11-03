@@ -14,11 +14,11 @@
 	</select>	
 	
 	<select id="noticeReplyList" resultType="ReplyVO" parameterType="int">
-		select * from multireply where notice_code=#{notice_code}
+		select * from multireply where notice_code=#{notice_code} order by reply_number desc
 	</select>
 	
 	<select id="qnaReplyList" resultType="ReplyVO" parameterType="int">
-		select * from multireply where qna_code=#{qna_code}
+		select * from multireply where qna_code=#{qna_code} order by reply_number desc
 	</select>
 
 

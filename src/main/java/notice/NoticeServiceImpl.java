@@ -1,11 +1,9 @@
 package notice;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 
@@ -13,19 +11,13 @@ import org.springframework.stereotype.Service;
 @Qualifier("noticeservice")
 public class NoticeServiceImpl implements NoticeService {
 	
-	@Autowired //만들어진 dao 를 자동으로 나에게 주입해줘 - setter 뺌
+	@Autowired
 	NoticeDAO dao;
 	
 	
 	@Override
 	public NoticeVO[] noticeList() {
 		return dao.noticeList();
-	}
-	
-	@Override
-	public NoticeVO[] historyNoticeOne(String email) {
-		//notice 1사람이 쓴 데이터 가져오기
-		return dao.noticeHistory(email); 
 	}
 
 	@Override
@@ -35,13 +27,11 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public void insertNotice(NoticeVO vo) {
-		//qna 입력
 		dao.insertNotice(vo);
 	}
 
 	@Override
 	public void updateNotice(NoticeVO vo) {
-		//qna 수정
 		dao.updateNotice(vo);
 	}
 
@@ -51,8 +41,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public int cnt() {
-		return dao.cnt();
+	public int cnt(HashMap<String, Object> map) {
+		return dao.cnt(map);
 	}
 
 	@Override
@@ -60,7 +50,11 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.listPage(displayPost, postNum);
 	}
 
+	public List<NoticeVO> listPage(HashMap<String, Object> map) {
+		return dao.listPage(map);
+	}
 
+	
 	
 	
 }
